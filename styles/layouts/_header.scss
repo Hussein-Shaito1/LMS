@@ -1,0 +1,245 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: $header-height;
+  @include glass;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+  &__inner {
+    @include container;
+    height: 100%;
+    @include flex-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $text-xl;
+    font-weight: $font-extrabold;
+    color: $primary;
+    text-decoration: none;
+    transition: opacity $transition;
+
+    &:hover { opacity: 0.8; }
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+
+    @include max-lg {
+      display: none;
+    }
+  }
+
+  &__nav-link {
+    padding: $space-2 $space-3;
+    border-radius: $radius;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    color: $text-secondary;
+    transition: $transition-all;
+
+    &:hover {
+      color: $primary;
+      background: $primary-lighter;
+    }
+
+    &--active {
+      color: $primary;
+      background: $primary-lighter;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__user {
+    position: relative;
+  }
+
+  &__user-btn {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    border-radius: $radius-full;
+    border: 1.5px solid $border;
+    background: $white;
+    transition: $transition-all;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary;
+      box-shadow: $shadow-sm;
+    }
+
+    &-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &-name {
+      font-size: $text-sm;
+      font-weight: $font-medium;
+      color: $text-primary;
+      max-width: 100px;
+      @include truncate;
+
+      @include max-md {
+        display: none;
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + #{$space-2});
+    right: 0;
+    min-width: 200px;
+    background: $white;
+    border: 1px solid $border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-xl;
+    overflow: hidden;
+    animation: fadeInDown 0.2s ease;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: $space-3;
+      padding: $space-3 $space-4;
+      font-size: $text-sm;
+      color: $text-secondary;
+      width: 100%;
+      transition: $transition-all;
+      cursor: pointer;
+      background: none;
+      border: none;
+
+      &:hover {
+        background: $gray-50;
+        color: $text-primary;
+      }
+
+      &--danger {
+        color: $error;
+        &:hover {
+          background: $error-light;
+          color: $error;
+        }
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+    }
+
+    &-divider {
+      height: 1px;
+      background: $border;
+      margin: $space-1 0;
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: $space-2;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    @include max-lg {
+      display: flex;
+    }
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: $text-primary;
+      border-radius: $radius-full;
+      transition: $transition-all;
+    }
+
+    &--open {
+      span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+
+  &__mobile-menu {
+    position: fixed;
+    inset: 0;
+    top: $header-height;
+    background: $white;
+    z-index: 99;
+    padding: $space-6;
+    animation: fadeIn 0.2s ease;
+    overflow-y: auto;
+
+    &-nav {
+      display: flex;
+      flex-direction: column;
+      gap: $space-2;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: $space-3;
+      padding: $space-4;
+      border-radius: $radius;
+      font-size: $text-base;
+      font-weight: $font-medium;
+      color: $text-secondary;
+      transition: $transition-all;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+
+      &:hover, &--active {
+        background: $primary-lighter;
+        color: $primary;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &-divider {
+      height: 1px;
+      background: $border;
+      margin: $space-4 0;
+    }
+  }
+}

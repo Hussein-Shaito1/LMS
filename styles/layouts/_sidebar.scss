@@ -1,0 +1,85 @@
+.sidebar {
+  width: $sidebar-width;
+  flex-shrink: 0;
+  @include card;
+  padding: $space-6;
+  height: fit-content;
+  position: sticky;
+  top: calc(#{$header-height} + #{$space-6});
+
+  @include max-lg {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    border-radius: 0;
+    overflow-y: auto;
+    width: $sidebar-width;
+    transform: translateX(-100%);
+    transition: transform $transition-slow cubic-bezier(0.4, 0, 0.2, 1);
+    @include custom-scrollbar;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__title {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $space-3;
+  }
+
+  &__section {
+    margin-bottom: $space-6;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: $border;
+    margin: $space-4 0;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-2 $space-3;
+    border-radius: $radius;
+    cursor: pointer;
+    font-size: $text-sm;
+    color: $text-secondary;
+    transition: $transition-all;
+    width: 100%;
+    background: none;
+    border: none;
+
+    &:hover {
+      background: $gray-50;
+      color: $text-primary;
+    }
+
+    &--active {
+      background: $primary-lighter;
+      color: $primary;
+      font-weight: $font-medium;
+    }
+
+    &-count {
+      font-size: $text-xs;
+      color: $text-muted;
+      background: $gray-100;
+      padding: 1px $space-2;
+      border-radius: $radius-full;
+      margin-left: auto;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: $space-1 $space-3;
+  border-radius: $radius-full;
+  font-size: $text-xs;
+  font-weight: $font-semibold;
+  line-height: 1;
+  white-space: nowrap;
+
+  &--beginner {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+
+  &--intermediate {
+    background: #fef3c7;
+    color: #d97706;
+  }
+
+  &--advanced {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+
+  &--web-development {
+    background: $primary-lighter;
+    color: $primary-dark;
+  }
+
+  &--design {
+    background: #fce7f3;
+    color: #db2777;
+  }
+
+  &--data-science {
+    background: #ede9fe;
+    color: #7c3aed;
+  }
+
+  &--devops {
+    background: #d1fae5;
+    color: #059669;
+  }
+
+  &--mobile {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  &--security {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  &--marketing {
+    background: #ffedd5;
+    color: #ea580c;
+  }
+
+  &--success {
+    background: $success-light;
+    color: $success;
+  }
+
+  &--error {
+    background: $error-light;
+    color: $error;
+  }
+
+  &--info {
+    background: $info-light;
+    color: $info;
+  }
+
+  &--warning {
+    background: $warning-light;
+    color: $warning;
+  }
+
+  &--gray {
+    background: $gray-100;
+    color: $gray-600;
+  }
+
+  &--primary {
+    background: $primary-lighter;
+    color: $primary-dark;
+  }
+}

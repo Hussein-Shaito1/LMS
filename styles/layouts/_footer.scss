@@ -1,0 +1,125 @@
+.footer {
+  background: $gray-900;
+  color: $gray-300;
+  padding: $space-16 0 $space-8;
+
+  &__inner {
+    @include container;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: $space-8;
+    margin-bottom: $space-12;
+
+    @include max-lg {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include max-md {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__brand {
+    &-logo {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+      font-size: $text-xl;
+      font-weight: $font-extrabold;
+      color: $white;
+      margin-bottom: $space-4;
+    }
+
+    &-desc {
+      font-size: $text-sm;
+      line-height: $leading-relaxed;
+      color: $gray-400;
+      max-width: 280px;
+    }
+
+    &-social {
+      display: flex;
+      gap: $space-3;
+      margin-top: $space-5;
+
+      a {
+        width: 36px;
+        height: 36px;
+        border-radius: $radius;
+        background: $gray-800;
+        @include flex-center;
+        color: $gray-400;
+        transition: $transition-all;
+
+        &:hover {
+          background: $primary;
+          color: $white;
+          transform: translateY(-2px);
+        }
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  &__col {
+    &-title {
+      font-size: $text-sm;
+      font-weight: $font-semibold;
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: $space-4;
+    }
+
+    &-links {
+      display: flex;
+      flex-direction: column;
+      gap: $space-3;
+
+      a {
+        font-size: $text-sm;
+        color: $gray-400;
+        transition: color $transition;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    padding-top: $space-8;
+    border-top: 1px solid $gray-800;
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $space-4;
+
+    &-copy {
+      font-size: $text-sm;
+      color: $gray-500;
+    }
+
+    &-links {
+      display: flex;
+      gap: $space-6;
+
+      a {
+        font-size: $text-sm;
+        color: $gray-500;
+        transition: color $transition;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}

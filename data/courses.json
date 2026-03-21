@@ -1,0 +1,1032 @@
+[
+  {
+    "id": "course-1",
+    "title": "Complete React & Next.js Developer Course",
+    "description": "Master React 19 and Next.js 15 from scratch. Build real-world apps with App Router, Server Components, TypeScript, and modern best practices. This comprehensive course takes you from beginner to professional-level React developer.",
+    "shortDescription": "Master React 19 and Next.js 15 from scratch with real-world projects.",
+    "category": "Web Development",
+    "level": "Beginner",
+    "instructor": "Sarah Johnson",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=47",
+    "instructorId": "teacher-1",
+    "duration": "28h 45m",
+    "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
+    "rating": 4.9,
+    "students": 12840,
+    "lessons": [
+      {
+        "id": "lesson-1-1",
+        "title": "Introduction to React 19",
+        "duration": "15:20",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "React is a JavaScript library for building user interfaces. In this lesson we explore what makes React 19 special: the new compiler, automatic memoization, improved server components, and the action-based form handling API. By the end you'll understand why React dominates the frontend ecosystem and what's new in the latest major version.",
+        "questions": [
+          {
+            "id": "q-1-1-1",
+            "type": "multiple-choice",
+            "question": "What is the primary purpose of React?",
+            "options": [
+              { "id": "a", "text": "Managing databases" },
+              { "id": "b", "text": "Building user interfaces" },
+              { "id": "c", "text": "Handling HTTP requests" },
+              { "id": "d", "text": "Writing server-side logic" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "React is a JavaScript library specifically designed for building user interfaces, particularly for single-page applications."
+          },
+          {
+            "id": "q-1-1-2",
+            "type": "input-text",
+            "question": "What command do you use to create a new React project with Vite? (e.g. npm create vite@latest)",
+            "correctAnswer": "npm create vite@latest",
+            "explanation": "npm create vite@latest scaffolds a new Vite project which supports React as a template option."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-2",
+        "title": "Setting Up Your Development Environment",
+        "duration": "12:45",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "A good development environment is the foundation of productive coding. We'll install Node.js, configure VS Code with the best extensions for React development, set up ESLint and Prettier, and configure path aliases so your import statements stay clean and readable.",
+        "questions": [
+          {
+            "id": "q-1-2-1",
+            "type": "multiple-choice",
+            "question": "Which VS Code extension is most useful for React development?",
+            "options": [
+              { "id": "a", "text": "Python" },
+              { "id": "b", "text": "ES7+ React/Redux/React-Native snippets" },
+              { "id": "c", "text": "Live Share" },
+              { "id": "d", "text": "GitLens" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "ES7+ React/Redux/React-Native snippets provides handy shortcuts like 'rafce' to scaffold React components instantly."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-3",
+        "title": "JSX and Components",
+        "duration": "18:30",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "JSX is a syntax extension for JavaScript that looks similar to HTML. React transforms JSX into regular JavaScript function calls. In this lesson you'll learn the rules of JSX, how to create functional components, and how component composition enables you to build complex UIs from simple building blocks.",
+        "questions": [
+          {
+            "id": "q-1-3-1",
+            "type": "dropdown",
+            "question": "What does JSX stand for?",
+            "options": [
+              { "id": "a", "text": "JavaScript XML" },
+              { "id": "b", "text": "Java Syntax Extension" },
+              { "id": "c", "text": "JSON eXtensible" },
+              { "id": "d", "text": "JavaScript Extra" }
+            ],
+            "correctAnswer": "a",
+            "explanation": "JSX stands for JavaScript XML. It allows you to write HTML-like syntax directly in your JavaScript code."
+          },
+          {
+            "id": "q-1-3-2",
+            "type": "input-text",
+            "question": "In JSX, what attribute replaces the HTML 'class' attribute?",
+            "correctAnswer": "className",
+            "explanation": "Since 'class' is a reserved word in JavaScript, JSX uses 'className' instead."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-4",
+        "title": "Props and State Management",
+        "duration": "22:10",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Props allow you to pass data from parent to child components, making components reusable and composable. State represents data that changes over time within a component. Understanding the difference between props (read-only, from parent) and state (mutable, internal) is fundamental to building React applications correctly.",
+        "questions": [
+          {
+            "id": "q-1-4-1",
+            "type": "multiple-choice",
+            "question": "Which statement about props is correct?",
+            "options": [
+              { "id": "a", "text": "Props can be modified by the child component" },
+              { "id": "b", "text": "Props flow from child to parent" },
+              { "id": "c", "text": "Props are read-only and flow from parent to child" },
+              { "id": "d", "text": "Props are stored in local component state" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "Props are read-only and always flow downward from parent to child. To communicate from child to parent, you pass a callback function as a prop."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-5",
+        "title": "Hooks: useState and useEffect",
+        "duration": "25:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Hooks let you use React features like state and lifecycle methods inside functional components. useState gives components memory, letting them track values that change. useEffect lets you synchronize components with external systems like APIs, subscriptions, or the browser DOM.",
+        "questions": [
+          {
+            "id": "q-1-5-1",
+            "type": "multiple-choice",
+            "question": "What does the second element of the useState array represent?",
+            "options": [
+              { "id": "a", "text": "The initial state value" },
+              { "id": "b", "text": "The state setter function" },
+              { "id": "c", "text": "The previous state" },
+              { "id": "d", "text": "The state type" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "useState returns a tuple: [currentState, setterFunction]. The setter function is called to update the state and trigger a re-render."
+          },
+          {
+            "id": "q-1-5-2",
+            "type": "dropdown",
+            "question": "When does useEffect run by default (with no dependency array)?",
+            "options": [
+              { "id": "a", "text": "Only once on mount" },
+              { "id": "b", "text": "After every render" },
+              { "id": "c", "text": "Only when state changes" },
+              { "id": "d", "text": "Only on unmount" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "Without a dependency array, useEffect runs after every render. Adding [] makes it run once on mount. Adding [dep] makes it run when dep changes."
+          },
+          {
+            "id": "q-1-5-3",
+            "type": "multiselect",
+            "question": "Which of the following are valid built-in React hooks? (Select all that apply)",
+            "options": [
+              { "id": "a", "text": "useState" },
+              { "id": "b", "text": "useEffect" },
+              { "id": "c", "text": "useStore" },
+              { "id": "d", "text": "useContext" },
+              { "id": "e", "text": "useReducer" }
+            ],
+            "correctAnswer": "a,b,d,e",
+            "explanation": "useState, useEffect, useContext, and useReducer are all built-in React hooks. useStore is not a standard React hook — it's specific to Zustand."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-6",
+        "title": "Next.js App Router Overview",
+        "duration": "20:15",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Next.js App Router is a paradigm shift in how we build React applications. Every file in the app/ directory is a React Server Component by default. Layouts, loading states, error boundaries, and parallel routes are all file-system conventions. This lesson gives you the mental model needed to understand App Router deeply.",
+        "questions": [
+          {
+            "id": "q-1-6-1",
+            "type": "input-text",
+            "question": "What directive do you add at the top of a Next.js file to make it a Client Component?",
+            "correctAnswer": "'use client'",
+            "explanation": "Adding 'use client' at the top of a file marks it and all its imports as client-side components, enabling hooks and browser APIs."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-7",
+        "title": "Server vs Client Components",
+        "duration": "17:40",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "One of the most important concepts in Next.js App Router is the distinction between Server and Client Components. Server Components run only on the server and can access databases directly. Client Components run in the browser and support interactivity. Learning when to use each is key to building performant applications.",
+        "questions": [
+          {
+            "id": "q-1-7-1",
+            "type": "multiple-choice",
+            "question": "Which of these can ONLY be used in a Client Component?",
+            "options": [
+              { "id": "a", "text": "Fetching data from a database" },
+              { "id": "b", "text": "Reading environment variables" },
+              { "id": "c", "text": "Using useState and useEffect hooks" },
+              { "id": "d", "text": "Rendering static HTML" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "Hooks like useState and useEffect require a browser runtime and can only be used in Client Components marked with 'use client'."
+          }
+        ]
+      },
+      {
+        "id": "lesson-1-8",
+        "title": "Data Fetching Strategies",
+        "duration": "23:55",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Next.js offers multiple data fetching strategies: static generation (build-time), server-side rendering (per-request), and client-side fetching. Each has trade-offs in terms of performance, freshness, and complexity. This lesson covers when to use each strategy and how to implement them with the fetch API and React cache.",
+        "questions": [
+          {
+            "id": "q-1-8-1",
+            "type": "dropdown",
+            "question": "Which data fetching strategy is best for a blog page that rarely changes?",
+            "options": [
+              { "id": "a", "text": "Server-side rendering (SSR) on every request" },
+              { "id": "b", "text": "Client-side fetching with useEffect" },
+              { "id": "c", "text": "Static generation (SSG) at build time" },
+              { "id": "d", "text": "No caching at all" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "Static generation is ideal for content that rarely changes. The page is generated once at build time and served as static HTML, giving the best performance."
+          }
+        ]
+      }
+    ],
+    "tags": ["React", "Next.js", "TypeScript", "JavaScript"]
+  },
+  {
+    "id": "course-2",
+    "title": "UI/UX Design Fundamentals",
+    "description": "Learn the principles of great design and how to apply them to digital products. From color theory and typography to Figma workflows and design systems. Build a professional portfolio with real case studies and hands-on projects.",
+    "shortDescription": "Learn design principles, Figma workflows, and build a pro portfolio.",
+    "category": "Design",
+    "level": "Beginner",
+    "instructor": "Michael Chen",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=53",
+    "instructorId": "teacher-2",
+    "duration": "18h 20m",
+    "thumbnail": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+    "rating": 4.8,
+    "students": 8520,
+    "lessons": [
+      {
+        "id": "lesson-2-1",
+        "title": "What is UI/UX Design?",
+        "duration": "10:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "UI (User Interface) and UX (User Experience) are related but distinct disciplines. UI focuses on the visual layer — what users see. UX is about the entire experience — how users feel. Great products require both. This lesson defines each discipline and explains how designers collaborate with developers and stakeholders.",
+        "questions": [
+          {
+            "id": "q-2-1-1",
+            "type": "multiple-choice",
+            "question": "What does UX stand for?",
+            "options": [
+              { "id": "a", "text": "User Execution" },
+              { "id": "b", "text": "Unique Experience" },
+              { "id": "c", "text": "User Experience" },
+              { "id": "d", "text": "Unified Extension" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "UX stands for User Experience — it encompasses all aspects of the end-user's interaction with the product, system or service."
+          },
+          {
+            "id": "q-2-1-2",
+            "type": "input-text",
+            "question": "What does UI stand for? (two words)",
+            "correctAnswer": "User Interface",
+            "explanation": "UI stands for User Interface — the visual elements that users interact with such as buttons, forms, menus, and typography."
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-2",
+        "title": "Color Theory for Designers",
+        "duration": "16:30",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Color is one of the most powerful tools in a designer's toolkit. This lesson covers the color wheel, complementary and analogous color schemes, contrast ratios for accessibility (WCAG), and how to build a cohesive color palette using tools like Coolors and Adobe Color.",
+        "questions": [
+          {
+            "id": "q-2-2-1",
+            "type": "dropdown",
+            "question": "What is the minimum contrast ratio required by WCAG AA for normal text?",
+            "options": [
+              { "id": "a", "text": "2:1" },
+              { "id": "b", "text": "3:1" },
+              { "id": "c", "text": "4.5:1" },
+              { "id": "d", "text": "7:1" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "WCAG AA requires a minimum contrast ratio of 4.5:1 for normal text to ensure readability for users with low vision."
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-3",
+        "title": "Typography Essentials",
+        "duration": "14:15",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Typography is the art of arranging type to make text readable and visually appealing. We'll cover type classifications (serif, sans-serif, monospace), typographic scales, line height, letter spacing, and how to pair fonts effectively for professional-looking interfaces.",
+        "questions": [
+          {
+            "id": "q-2-3-1",
+            "type": "multiple-choice",
+            "question": "Which font style is generally considered easier to read on screens?",
+            "options": [
+              { "id": "a", "text": "Serif" },
+              { "id": "b", "text": "Sans-serif" },
+              { "id": "c", "text": "Monospace" },
+              { "id": "d", "text": "Display" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "Sans-serif fonts are generally considered more legible on digital screens due to their clean, simple letterforms without decorative strokes."
+          },
+          {
+            "id": "q-2-3-2",
+            "type": "input-text",
+            "question": "What CSS property controls the space between lines of text?",
+            "correctAnswer": "line-height",
+            "explanation": "The CSS line-height property sets the height of a line box, effectively controlling the spacing between lines of text."
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-4",
+        "title": "Figma Basics and Workflow",
+        "duration": "28:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Figma is the industry-standard design tool for UI/UX. This lesson walks through the Figma interface, frames and layers, auto layout, components, variants, and how to set up a design file for collaboration. You'll build your first mobile screen from scratch.",
+        "questions": [
+          {
+            "id": "q-2-4-1",
+            "type": "multiple-choice",
+            "question": "What Figma feature allows you to create responsive layouts that adapt to content?",
+            "options": [
+              { "id": "a", "text": "Constraints" },
+              { "id": "b", "text": "Auto Layout" },
+              { "id": "c", "text": "Grids" },
+              { "id": "d", "text": "Prototyping" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "Auto Layout in Figma allows frames and components to resize automatically based on their content, similar to CSS Flexbox."
+          },
+          {
+            "id": "q-2-4-2",
+            "type": "multiselect",
+            "question": "Which Figma features help maintain consistency across a design system? (Select all that apply)",
+            "options": [
+              { "id": "a", "text": "Components and Variants" },
+              { "id": "b", "text": "Export to PNG" },
+              { "id": "c", "text": "Shared Color Styles" },
+              { "id": "d", "text": "Design Tokens" },
+              { "id": "e", "text": "Shared Text Styles" }
+            ],
+            "correctAnswer": "a,c,d,e",
+            "explanation": "Components/Variants, Shared Color Styles, Design Tokens, and Shared Text Styles all enforce consistency. Exporting to PNG is just an output format, not a consistency mechanism."
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-5",
+        "title": "Wireframing and Prototyping",
+        "duration": "22:45",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Wireframes are low-fidelity sketches that map out the structure and layout of a screen without visual design details. Prototypes connect wireframes with interactions to simulate user flows. This lesson covers the wireframing process, fidelity levels, and how to build interactive prototypes in Figma for user testing.",
+        "questions": [
+          {
+            "id": "q-2-5-1",
+            "type": "dropdown",
+            "question": "At what stage of design should you typically create wireframes?",
+            "options": [
+              { "id": "a", "text": "After finalizing visual design" },
+              { "id": "b", "text": "During development" },
+              { "id": "c", "text": "Before visual design, to plan layout and structure" },
+              { "id": "d", "text": "Only during user testing" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "Wireframes are created early in the design process to plan the structure and layout before investing time in visual design details."
+          }
+        ]
+      },
+      {
+        "id": "lesson-2-6",
+        "title": "Design Systems and Components",
+        "duration": "19:20",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "A design system is a collection of reusable components, guided by clear standards, that can be assembled to build any number of applications. This lesson covers building a component library in Figma: tokens, components, variants, and documentation — ensuring consistency across a product.",
+        "questions": [
+          {
+            "id": "q-2-6-1",
+            "type": "input-text",
+            "question": "What are design tokens? (describe in 2-3 words)",
+            "correctAnswer": "reusable design values",
+            "explanation": "Design tokens are reusable design values (like colors, spacing, typography) stored as variables that can be shared across design and code."
+          }
+        ]
+      }
+    ],
+    "tags": ["Figma", "UI Design", "UX", "Prototyping"]
+  },
+  {
+    "id": "course-3",
+    "title": "Python for Data Science & Machine Learning",
+    "description": "A complete journey into data science with Python. Learn NumPy, Pandas, Matplotlib, Scikit-Learn, and TensorFlow. Work on real datasets and build machine learning models that solve actual business problems.",
+    "shortDescription": "Master data science with Python, NumPy, Pandas, and ML models.",
+    "category": "Data Science",
+    "level": "Intermediate",
+    "instructor": "Dr. Emily Rodriguez",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=32",
+    "instructorId": "teacher-3",
+    "duration": "35h 10m",
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "rating": 4.9,
+    "students": 15300,
+    "lessons": [
+      {
+        "id": "lesson-3-1",
+        "title": "Python Review for Data Science",
+        "duration": "20:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Before diving into data science libraries, let's solidify the Python fundamentals you'll use most. This lesson covers list comprehensions, dictionary operations, lambda functions, generators, and the standard library modules (os, json, csv) that are essential for data wrangling tasks.",
+        "questions": [
+          {
+            "id": "q-3-1-1",
+            "type": "multiple-choice",
+            "question": "What is the output of [x**2 for x in range(4)]?",
+            "options": [
+              { "id": "a", "text": "[1, 4, 9, 16]" },
+              { "id": "b", "text": "[0, 1, 4, 9]" },
+              { "id": "c", "text": "[0, 2, 4, 6]" },
+              { "id": "d", "text": "[1, 2, 3, 4]" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "range(4) produces [0,1,2,3]. Squaring each gives [0, 1, 4, 9]."
+          },
+          {
+            "id": "q-3-1-2",
+            "type": "input-text",
+            "question": "What Python method splits a string into a list of words? (just the method name)",
+            "correctAnswer": "split",
+            "explanation": "The str.split() method splits a string into a list of substrings based on a separator (default is whitespace)."
+          }
+        ]
+      },
+      {
+        "id": "lesson-3-2",
+        "title": "NumPy Arrays and Operations",
+        "duration": "25:30",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "NumPy is the foundation of scientific computing in Python. Its ndarray provides vectorized operations that are orders of magnitude faster than Python lists. This lesson covers array creation, indexing, slicing, broadcasting, and mathematical operations that you'll use constantly in data science.",
+        "questions": [
+          {
+            "id": "q-3-2-1",
+            "type": "dropdown",
+            "question": "Which NumPy function creates an array of evenly spaced values?",
+            "options": [
+              { "id": "a", "text": "np.zeros()" },
+              { "id": "b", "text": "np.arange()" },
+              { "id": "c", "text": "np.random.rand()" },
+              { "id": "d", "text": "np.ones()" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "np.arange(start, stop, step) creates an array with evenly spaced values, similar to Python's range() but returns an ndarray."
+          }
+        ]
+      },
+      {
+        "id": "lesson-3-3",
+        "title": "Pandas DataFrames",
+        "duration": "30:15",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Pandas DataFrames are the workhorse of data manipulation in Python. This lesson covers loading data from CSV/JSON, selecting and filtering rows/columns, handling missing values, groupby operations, and merging datasets — all the operations you need for real-world data analysis.",
+        "questions": [
+          {
+            "id": "q-3-3-1",
+            "type": "multiple-choice",
+            "question": "Which Pandas method reads a CSV file into a DataFrame?",
+            "options": [
+              { "id": "a", "text": "pd.load_csv()" },
+              { "id": "b", "text": "pd.read_csv()" },
+              { "id": "c", "text": "pd.import_csv()" },
+              { "id": "d", "text": "pd.open_csv()" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "pd.read_csv() is the standard way to load a CSV file into a Pandas DataFrame."
+          },
+          {
+            "id": "q-3-3-2",
+            "type": "input-text",
+            "question": "What Pandas method shows the first 5 rows of a DataFrame? (just the method name)",
+            "correctAnswer": "head",
+            "explanation": "df.head() returns the first 5 rows of the DataFrame by default. You can pass a number like df.head(10) for a different count."
+          }
+        ]
+      },
+      {
+        "id": "lesson-3-4",
+        "title": "Data Visualization with Matplotlib",
+        "duration": "22:40",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Visualizing data is critical for understanding patterns and communicating insights. This lesson covers Matplotlib's pyplot interface, creating line charts, bar charts, histograms, and scatter plots, plus customizing colors, labels, and layouts for publication-quality figures.",
+        "questions": [
+          {
+            "id": "q-3-4-1",
+            "type": "dropdown",
+            "question": "Which chart type is best for showing the distribution of a continuous variable?",
+            "options": [
+              { "id": "a", "text": "Bar chart" },
+              { "id": "b", "text": "Pie chart" },
+              { "id": "c", "text": "Histogram" },
+              { "id": "d", "text": "Line chart" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "A histogram is specifically designed to show the distribution of a continuous variable by grouping values into bins."
+          }
+        ]
+      },
+      {
+        "id": "lesson-3-5",
+        "title": "Machine Learning Fundamentals",
+        "duration": "35:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Machine learning enables computers to learn patterns from data. This lesson introduces the three main paradigms: supervised learning (labeled data), unsupervised learning (finding structure), and reinforcement learning (reward-based). We also cover the bias-variance tradeoff, overfitting, and the model evaluation pipeline.",
+        "questions": [
+          {
+            "id": "q-3-5-1",
+            "type": "multiple-choice",
+            "question": "In supervised learning, the training data must include:",
+            "options": [
+              { "id": "a", "text": "Only features, no labels" },
+              { "id": "b", "text": "Both features and labels" },
+              { "id": "c", "text": "Only labels, no features" },
+              { "id": "d", "text": "Reward signals from the environment" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "Supervised learning requires labeled training data — both input features (X) and the target output/labels (y) — so the model can learn the mapping."
+          },
+          {
+            "id": "q-3-5-2",
+            "type": "sorting",
+            "question": "Arrange these steps in the correct order for a typical machine learning project",
+            "options": [
+              { "id": "a", "text": "Collect and preprocess data" },
+              { "id": "b", "text": "Deploy model to production" },
+              { "id": "c", "text": "Select algorithm and train model" },
+              { "id": "d", "text": "Evaluate and tune performance" },
+              { "id": "e", "text": "Define the problem and objectives" }
+            ],
+            "correctAnswer": "e,a,c,d,b",
+            "explanation": "Standard ML workflow: define objectives → collect & preprocess data → select algorithm & train → evaluate & tune → deploy to production."
+          }
+        ]
+      },
+      {
+        "id": "lesson-3-6",
+        "title": "Scikit-Learn Models",
+        "duration": "28:20",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Scikit-Learn is the most widely used machine learning library in Python. This lesson covers its consistent fit/predict API, key algorithms (Linear Regression, Decision Trees, Random Forest, SVM), cross-validation, and the pipeline abstraction for combining preprocessing and modeling steps.",
+        "questions": [
+          {
+            "id": "q-3-6-1",
+            "type": "input-text",
+            "question": "What method do you call on a Scikit-Learn model to train it on data? (just the method name)",
+            "correctAnswer": "fit",
+            "explanation": "model.fit(X_train, y_train) trains the model on the training data. This is the consistent API across all Scikit-Learn estimators."
+          }
+        ]
+      },
+      {
+        "id": "lesson-3-7",
+        "title": "Neural Networks with TensorFlow",
+        "duration": "40:10",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "TensorFlow and its high-level Keras API make building neural networks accessible. This lesson covers the anatomy of a neural network (layers, activations, loss functions, optimizers), building a model with keras.Sequential, training and evaluating it, and understanding training metrics like accuracy and loss.",
+        "questions": [
+          {
+            "id": "q-3-7-1",
+            "type": "dropdown",
+            "question": "Which activation function is commonly used in the output layer for binary classification?",
+            "options": [
+              { "id": "a", "text": "ReLU" },
+              { "id": "b", "text": "Softmax" },
+              { "id": "c", "text": "Sigmoid" },
+              { "id": "d", "text": "Tanh" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "Sigmoid activation squashes output to [0,1], making it ideal for binary classification where you want a probability."
+          }
+        ]
+      }
+    ],
+    "tags": ["Python", "Machine Learning", "Data Science", "TensorFlow"]
+  },
+  {
+    "id": "course-4",
+    "title": "Node.js & Express Backend Development",
+    "description": "Build scalable REST APIs and backend services with Node.js, Express, and MongoDB. Learn authentication with JWT, error handling, middleware patterns, and deploy your applications to production.",
+    "shortDescription": "Build REST APIs with Node.js, Express, MongoDB, and deploy to production.",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "instructor": "James Wilson",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=15",
+    "instructorId": "teacher-4",
+    "duration": "22h 30m",
+    "thumbnail": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&q=80",
+    "rating": 4.7,
+    "students": 9870,
+    "lessons": [
+      {
+        "id": "lesson-4-1",
+        "title": "Node.js Core Concepts",
+        "duration": "18:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Node.js is a JavaScript runtime built on Chrome's V8 engine that enables server-side JavaScript. Its event loop and non-blocking I/O model make it excellent for I/O-heavy applications. This lesson covers the event loop, modules (CommonJS and ESM), the Node.js standard library, and npm package management.",
+        "questions": [
+          {
+            "id": "q-4-1-1",
+            "type": "multiple-choice",
+            "question": "What makes Node.js well-suited for I/O-intensive applications?",
+            "options": [
+              { "id": "a", "text": "It uses multiple threads by default" },
+              { "id": "b", "text": "Its non-blocking, event-driven I/O model" },
+              { "id": "c", "text": "It compiles to native code" },
+              { "id": "d", "text": "It has built-in database support" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "Node.js uses a non-blocking, event-driven I/O model with a single event loop, which efficiently handles many concurrent connections without thread overhead."
+          }
+        ]
+      },
+      {
+        "id": "lesson-4-2",
+        "title": "Express Framework Setup",
+        "duration": "15:30",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Express is a minimal and flexible Node.js web framework. This lesson covers setting up an Express application, understanding the request-response cycle, routing basics, and using common middleware like cors, helmet, and morgan for security and logging.",
+        "questions": [
+          {
+            "id": "q-4-2-1",
+            "type": "input-text",
+            "question": "What Express method do you call to register a GET route handler? (e.g. app.???)",
+            "correctAnswer": "app.get",
+            "explanation": "app.get(path, handler) registers a route handler for GET requests. Similarly app.post, app.put, app.delete handle other HTTP methods."
+          }
+        ]
+      },
+      {
+        "id": "lesson-4-3",
+        "title": "REST API Design",
+        "duration": "20:45",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "A well-designed REST API is intuitive and consistent. This lesson covers REST principles, resource naming conventions, HTTP methods and status codes, versioning strategies, pagination, and how to design an API contract that frontend developers will love to work with.",
+        "questions": [
+          {
+            "id": "q-4-3-1",
+            "type": "dropdown",
+            "question": "Which HTTP status code indicates a resource was successfully created?",
+            "options": [
+              { "id": "a", "text": "200 OK" },
+              { "id": "b", "text": "201 Created" },
+              { "id": "c", "text": "204 No Content" },
+              { "id": "d", "text": "400 Bad Request" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "201 Created is the correct status code for a successful POST request that creates a new resource."
+          },
+          {
+            "id": "q-4-3-2",
+            "type": "multiple-choice",
+            "question": "In RESTful design, which HTTP method should be used to partially update a resource?",
+            "options": [
+              { "id": "a", "text": "POST" },
+              { "id": "b", "text": "PUT" },
+              { "id": "c", "text": "PATCH" },
+              { "id": "d", "text": "DELETE" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "PATCH is used for partial updates. PUT replaces the entire resource. PATCH only modifies the specified fields."
+          },
+          {
+            "id": "q-4-3-3",
+            "type": "sorting",
+            "question": "Order these HTTP methods to match CRUD operations: Create → Read → Update → Delete",
+            "options": [
+              { "id": "a", "text": "DELETE" },
+              { "id": "b", "text": "POST" },
+              { "id": "c", "text": "PUT / PATCH" },
+              { "id": "d", "text": "GET" }
+            ],
+            "correctAnswer": "b,d,c,a",
+            "explanation": "CRUD maps to HTTP: Create → POST, Read → GET, Update → PUT/PATCH, Delete → DELETE."
+          }
+        ]
+      },
+      {
+        "id": "lesson-4-4",
+        "title": "MongoDB and Mongoose",
+        "duration": "26:10",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "MongoDB is a document-oriented NoSQL database that stores data in flexible JSON-like documents. Mongoose is an ODM (Object Document Mapper) that provides schema validation and a clean API for Node.js. This lesson covers connecting to MongoDB, defining schemas, and performing CRUD operations.",
+        "questions": [
+          {
+            "id": "q-4-4-1",
+            "type": "multiple-choice",
+            "question": "What is the primary data format MongoDB uses to store documents?",
+            "options": [
+              { "id": "a", "text": "XML" },
+              { "id": "b", "text": "CSV" },
+              { "id": "c", "text": "BSON (Binary JSON)" },
+              { "id": "d", "text": "Plain text" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "MongoDB stores data as BSON (Binary JSON), which is a binary-encoded serialization of JSON-like documents with support for additional data types."
+          }
+        ]
+      },
+      {
+        "id": "lesson-4-5",
+        "title": "JWT Authentication",
+        "duration": "22:30",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "JSON Web Tokens (JWTs) are a compact, URL-safe way to represent claims between parties. This lesson covers JWT structure (header.payload.signature), signing and verifying tokens with jsonwebtoken, implementing protected routes with middleware, and refresh token patterns for long-lived sessions.",
+        "questions": [
+          {
+            "id": "q-4-5-1",
+            "type": "dropdown",
+            "question": "Which part of a JWT contains the user data (claims)?",
+            "options": [
+              { "id": "a", "text": "Header" },
+              { "id": "b", "text": "Payload" },
+              { "id": "c", "text": "Signature" },
+              { "id": "d", "text": "Cookie" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "The JWT payload contains the claims (user data like id, email, roles). It's Base64 encoded but not encrypted — don't put sensitive data in it."
+          }
+        ]
+      },
+      {
+        "id": "lesson-4-6",
+        "title": "Middleware and Error Handling",
+        "duration": "17:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Middleware functions in Express are the backbone of the request-processing pipeline. This lesson covers writing custom middleware for logging, authentication, and request validation, plus implementing a centralized error handling strategy with custom error classes and async error wrappers.",
+        "questions": [
+          {
+            "id": "q-4-6-1",
+            "type": "input-text",
+            "question": "In Express middleware, what function parameter do you call to pass control to the next middleware?",
+            "correctAnswer": "next",
+            "explanation": "Calling next() in a middleware function passes control to the next middleware or route handler in the stack."
+          }
+        ]
+      }
+    ],
+    "tags": ["Node.js", "Express", "MongoDB", "REST API"]
+  },
+  {
+    "id": "course-5",
+    "title": "Advanced CSS & SCSS Mastery",
+    "description": "Deep dive into modern CSS: Flexbox, Grid, animations, custom properties, and SCSS. Learn to build responsive layouts, design systems, and create stunning visual effects that make your websites stand out.",
+    "shortDescription": "Deep dive into modern CSS, Flexbox, Grid, SCSS, and animations.",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "instructor": "Aisha Patel",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=25",
+    "instructorId": "teacher-5",
+    "duration": "15h 50m",
+    "thumbnail": "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&q=80",
+    "rating": 4.8,
+    "students": 6420,
+    "lessons": [
+      {
+        "id": "lesson-5-1",
+        "title": "Modern CSS Fundamentals",
+        "duration": "14:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "CSS has evolved dramatically in recent years. This lesson covers the cascade, specificity, inheritance, the box model, and the new logical properties. We also look at what modern browsers now support natively — from container queries to CSS nesting — so you don't need JavaScript for things you used to.",
+        "questions": [
+          {
+            "id": "q-5-1-1",
+            "type": "multiple-choice",
+            "question": "Which CSS specificity is the highest?",
+            "options": [
+              { "id": "a", "text": "Class selector (.box)" },
+              { "id": "b", "text": "Element selector (div)" },
+              { "id": "c", "text": "ID selector (#main)" },
+              { "id": "d", "text": "Universal selector (*)" }
+            ],
+            "correctAnswer": "c",
+            "explanation": "ID selectors have the highest specificity among the options (0,1,0,0), followed by class (0,0,1,0), then element (0,0,0,1), then universal (0,0,0,0)."
+          }
+        ]
+      },
+      { "id": "lesson-5-2", "title": "Flexbox Deep Dive", "duration": "20:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Flexbox is a one-dimensional layout system that simplifies aligning and distributing items along a single axis. This lesson covers flex containers vs items, main/cross axis, justify-content, align-items, flex-grow/shrink/basis, and common real-world patterns like navigation bars and card rows." },
+      { "id": "lesson-5-3", "title": "CSS Grid Mastery", "duration": "24:15", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "CSS Grid is a two-dimensional layout system that gives you full control over both rows and columns. This lesson covers grid-template-columns/rows, fr units, grid-area naming, auto-placement, and building complex magazine-style layouts that would be impossible with older techniques." },
+      { "id": "lesson-5-4", "title": "CSS Custom Properties", "duration": "16:40", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "CSS custom properties (variables) bring theming and maintainability to plain CSS. This lesson covers declaring and using variables, scoping with :root vs components, dynamic theming with JavaScript, and building a dark-mode toggle using only CSS variables." },
+      { "id": "lesson-5-5", "title": "SCSS Architecture", "duration": "19:20", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "SCSS adds programming constructs to CSS: variables, nesting, mixins, functions, and partials. This lesson covers organizing SCSS into a scalable architecture with 7-1 pattern, writing reusable mixins for breakpoints and utilities, and understanding when SCSS adds value vs native CSS features." },
+      { "id": "lesson-5-6", "title": "CSS Animations and Transitions", "duration": "22:00", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Animations bring interfaces to life. This lesson covers CSS transitions for smooth state changes, @keyframes for multi-step animations, timing functions, animation-fill-mode, and performance best practices — only animating transform and opacity to avoid layout thrashing." },
+      { "id": "lesson-5-7", "title": "Responsive Design Patterns", "duration": "18:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Responsive design ensures your website looks great on all screen sizes. This lesson covers mobile-first design philosophy, media queries, breakpoints, fluid typography with clamp(), container queries, and responsive images — building layouts that adapt gracefully from 320px to 4K." }
+    ],
+    "tags": ["CSS", "SCSS", "Flexbox", "Grid", "Animations"]
+  },
+  {
+    "id": "course-6",
+    "title": "DevOps & CI/CD with Docker and Kubernetes",
+    "description": "Learn the DevOps lifecycle from code to production. Containerize applications with Docker, orchestrate with Kubernetes, and build automated CI/CD pipelines with GitHub Actions and Jenkins.",
+    "shortDescription": "Master Docker, Kubernetes, and CI/CD pipelines for modern DevOps.",
+    "category": "DevOps",
+    "level": "Advanced",
+    "instructor": "Omar Khalid",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=60",
+    "instructorId": "teacher-6",
+    "duration": "30h 20m",
+    "thumbnail": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80",
+    "rating": 4.7,
+    "students": 5180,
+    "lessons": [
+      {
+        "id": "lesson-6-1",
+        "title": "DevOps Culture and Practices",
+        "duration": "12:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "DevOps is a cultural and technical movement that breaks down silos between development and operations teams. This lesson covers the CALMS framework (Culture, Automation, Lean, Measurement, Sharing), the DevOps lifecycle from plan to monitor, and why DevOps leads to faster, more reliable software delivery.",
+        "questions": [
+          {
+            "id": "q-6-1-1",
+            "type": "multiple-choice",
+            "question": "What does CI/CD stand for?",
+            "options": [
+              { "id": "a", "text": "Code Inspection / Code Delivery" },
+              { "id": "b", "text": "Continuous Integration / Continuous Delivery" },
+              { "id": "c", "text": "Container Integration / Container Deployment" },
+              { "id": "d", "text": "Code Integration / Code Deployment" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "CI/CD stands for Continuous Integration / Continuous Delivery (or Deployment). CI automates testing, CD automates deployment to production."
+          }
+        ]
+      },
+      { "id": "lesson-6-2", "title": "Docker Fundamentals", "duration": "28:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Docker packages applications and their dependencies into portable containers. This lesson covers images vs containers, the Dockerfile build process, common instructions (FROM, RUN, COPY, EXPOSE, CMD), layering, and publishing to Docker Hub." },
+      { "id": "lesson-6-3", "title": "Docker Compose", "duration": "20:15", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Docker Compose lets you define and run multi-container applications with a single YAML file. This lesson covers docker-compose.yml syntax, service definitions, networking between containers, volumes for persistence, and useful compose commands for development workflows." },
+      { "id": "lesson-6-4", "title": "Kubernetes Architecture", "duration": "35:00", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Kubernetes is the industry-standard container orchestration platform. This lesson covers the cluster architecture (control plane vs worker nodes), core objects (Pod, Deployment, Service, ConfigMap, Secret), kubectl commands, and how Kubernetes ensures high availability and self-healing." },
+      { "id": "lesson-6-5", "title": "Helm Charts and Deployments", "duration": "24:45", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Helm is the package manager for Kubernetes. This lesson covers Helm charts structure, templating with Go templates, values.yaml overrides, installing and upgrading releases, and creating your own chart for a simple web application." },
+      { "id": "lesson-6-6", "title": "GitHub Actions CI/CD", "duration": "22:10", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "GitHub Actions automates your software workflows directly in GitHub. This lesson builds a complete CI/CD pipeline: running tests on push, building a Docker image, pushing to a container registry, and deploying to Kubernetes — all triggered automatically on every merge to main." }
+    ],
+    "tags": ["Docker", "Kubernetes", "CI/CD", "DevOps"]
+  },
+  {
+    "id": "course-7",
+    "title": "iOS App Development with Swift & SwiftUI",
+    "description": "Build native iOS apps using Swift and SwiftUI from the ground up. Learn state management, navigation, data persistence, networking, and publish your app on the App Store.",
+    "shortDescription": "Build native iOS apps with Swift and SwiftUI from scratch.",
+    "category": "Mobile",
+    "level": "Beginner",
+    "instructor": "Laura Kim",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=48",
+    "instructorId": "teacher-7",
+    "duration": "26h 00m",
+    "thumbnail": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+    "rating": 4.6,
+    "students": 7240,
+    "lessons": [
+      {
+        "id": "lesson-7-1",
+        "title": "Swift Language Basics",
+        "duration": "20:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Swift is Apple's modern programming language designed for safety, performance, and expressiveness. This lesson covers Swift syntax: constants and variables, type inference, optionals, control flow, functions, closures, and structs vs classes — the building blocks for all iOS development.",
+        "questions": [
+          {
+            "id": "q-7-1-1",
+            "type": "multiple-choice",
+            "question": "In Swift, which keyword declares a constant?",
+            "options": [
+              { "id": "a", "text": "var" },
+              { "id": "b", "text": "let" },
+              { "id": "c", "text": "const" },
+              { "id": "d", "text": "final" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "In Swift, 'let' declares a constant (immutable), while 'var' declares a variable (mutable). This is the opposite order from some other languages."
+          }
+        ]
+      },
+      { "id": "lesson-7-2", "title": "SwiftUI Views and Modifiers", "duration": "18:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "SwiftUI uses a declarative syntax to describe your UI. This lesson covers the View protocol, built-in views (Text, Image, Button, VStack, HStack, ZStack), view modifiers for styling, and how the preview canvas makes development fast and iterative." },
+      { "id": "lesson-7-3", "title": "State and Data Flow", "duration": "22:15", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "SwiftUI's data flow model uses property wrappers to keep the UI in sync with data. This lesson covers @State for local state, @Binding for passing state to children, @ObservableObject / @StateObject for shared state, and @EnvironmentObject for app-wide state." },
+      { "id": "lesson-7-4", "title": "Navigation and Routing", "duration": "16:40", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Navigation is fundamental to iOS app structure. This lesson covers NavigationStack, NavigationLink, sheet and fullScreenCover for modal presentation, TabView for tab-based navigation, and programmatic navigation with NavigationPath." },
+      { "id": "lesson-7-5", "title": "Networking and APIs", "duration": "25:00", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Most iOS apps communicate with web APIs. This lesson covers URLSession for HTTP requests, async/await for clean asynchronous code, Codable for JSON decoding, error handling patterns, and integrating network data into SwiftUI views with @StateObject and task modifier." },
+      { "id": "lesson-7-6", "title": "Core Data Persistence", "duration": "20:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Core Data is Apple's framework for local data persistence. This lesson covers the Core Data stack, creating data models in Xcode, NSManagedObject subclasses, fetching with NSFetchRequest and @FetchRequest property wrapper, and saving/deleting records." }
+    ],
+    "tags": ["Swift", "SwiftUI", "iOS", "Apple"]
+  },
+  {
+    "id": "course-8",
+    "title": "Cybersecurity Fundamentals",
+    "description": "Learn the core concepts of cybersecurity: threat modeling, network security, cryptography, ethical hacking basics, and incident response. Prepare for CompTIA Security+ and build a career in cybersecurity.",
+    "shortDescription": "Learn cybersecurity essentials: threats, encryption, ethical hacking.",
+    "category": "Security",
+    "level": "Beginner",
+    "instructor": "Marcus Thompson",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=12",
+    "instructorId": "teacher-8",
+    "duration": "20h 15m",
+    "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+    "rating": 4.8,
+    "students": 11200,
+    "lessons": [
+      {
+        "id": "lesson-8-1",
+        "title": "Introduction to Cybersecurity",
+        "duration": "14:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. This lesson introduces the CIA Triad (Confidentiality, Integrity, Availability), common attack vectors, the attacker mindset, and why cybersecurity is one of the fastest-growing career fields.",
+        "questions": [
+          {
+            "id": "q-8-1-1",
+            "type": "multiple-choice",
+            "question": "What does the 'CIA' in the CIA Triad stand for?",
+            "options": [
+              { "id": "a", "text": "Cyber, Intelligence, Awareness" },
+              { "id": "b", "text": "Confidentiality, Integrity, Availability" },
+              { "id": "c", "text": "Control, Identity, Access" },
+              { "id": "d", "text": "Compliance, Infrastructure, Authentication" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "The CIA Triad represents the three core principles of information security: Confidentiality (data privacy), Integrity (data accuracy), and Availability (system uptime)."
+          }
+        ]
+      },
+      { "id": "lesson-8-2", "title": "Networking Concepts for Security", "duration": "22:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Understanding networking is essential for cybersecurity. This lesson covers the OSI model, TCP/IP fundamentals, common protocols (HTTP, DNS, DHCP, SSH), firewalls, NAT, VPNs, and how to read network traffic with Wireshark to spot suspicious activity." },
+      { "id": "lesson-8-3", "title": "Cryptography Basics", "duration": "18:15", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Cryptography is the backbone of secure communications. This lesson covers symmetric vs asymmetric encryption, common algorithms (AES, RSA, ECC), hashing (SHA-256, bcrypt), digital signatures, TLS/SSL handshakes, and why certificate authorities matter for web security." },
+      { "id": "lesson-8-4", "title": "Threat Modeling and Risk Assessment", "duration": "20:00", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Threat modeling is a structured approach to identifying and prioritizing security threats before they become incidents. This lesson covers the STRIDE model, creating data flow diagrams, OWASP Top 10 vulnerabilities, risk scoring with CVSS, and building a threat model for a simple web application." },
+      { "id": "lesson-8-5", "title": "Ethical Hacking Introduction", "duration": "26:40", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Ethical hackers (penetration testers) are hired to find vulnerabilities before malicious actors do. This lesson covers the penetration testing lifecycle (reconnaissance, scanning, exploitation, reporting), legal and ethical considerations, and introduces tools like Nmap and Metasploit in a legal lab context." },
+      { "id": "lesson-8-6", "title": "Incident Response Procedures", "duration": "17:20", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "When a breach occurs, a practiced incident response plan minimizes damage. This lesson covers the NIST incident response lifecycle (Preparation, Detection, Containment, Eradication, Recovery, Lessons Learned), writing an incident response plan, and how to preserve forensic evidence." }
+    ],
+    "tags": ["Cybersecurity", "Networking", "Ethical Hacking", "Cryptography"]
+  },
+  {
+    "id": "course-9",
+    "title": "Full-Stack TypeScript with tRPC & Prisma",
+    "description": "Build end-to-end type-safe full-stack applications using TypeScript, tRPC, Prisma ORM, and Next.js. Learn how to create monorepos, shared types, and production-ready architectures.",
+    "shortDescription": "Build type-safe full-stack apps with TypeScript, tRPC, and Prisma.",
+    "category": "Web Development",
+    "level": "Advanced",
+    "instructor": "Nina Kovacs",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=38",
+    "instructorId": "teacher-9",
+    "duration": "24h 40m",
+    "thumbnail": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    "rating": 4.9,
+    "students": 4320,
+    "lessons": [
+      {
+        "id": "lesson-9-1",
+        "title": "TypeScript Advanced Patterns",
+        "duration": "25:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Advanced TypeScript patterns are essential for building robust full-stack applications. This lesson covers generics, conditional types, mapped types, template literal types, utility types (Partial, Required, Pick, Omit), and how to use satisfies and as const for precise type inference.",
+        "questions": [
+          {
+            "id": "q-9-1-1",
+            "type": "multiple-choice",
+            "question": "What TypeScript utility type makes all properties of a type optional?",
+            "options": [
+              { "id": "a", "text": "Required<T>" },
+              { "id": "b", "text": "Partial<T>" },
+              { "id": "c", "text": "Readonly<T>" },
+              { "id": "d", "text": "Pick<T, K>" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "Partial<T> creates a type with all properties of T set to optional. It's commonly used for update payloads where not all fields need to be provided."
+          }
+        ]
+      },
+      { "id": "lesson-9-2", "title": "tRPC Setup and Routers", "duration": "22:15", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "tRPC enables end-to-end type-safe APIs without code generation. This lesson covers setting up the tRPC server router, defining query and mutation procedures, Zod input validation, the createCaller utility for server-side calls, and connecting tRPC to Next.js API routes." },
+      { "id": "lesson-9-3", "title": "Prisma Schema Design", "duration": "28:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Prisma ORM gives you type-safe database access with an intuitive schema language. This lesson covers the Prisma schema DSL, defining models and relations (one-to-many, many-to-many), migrations workflow, the Prisma Client API for CRUD operations, and seeding a database." },
+      { "id": "lesson-9-4", "title": "Authentication with NextAuth", "duration": "20:00", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "NextAuth.js (Auth.js) is the authentication standard for Next.js applications. This lesson covers setting up providers (Google, GitHub, Credentials), session strategies (JWT vs database), protecting pages and API routes, and integrating NextAuth with Prisma for database-backed sessions." },
+      { "id": "lesson-9-5", "title": "Monorepo with Turborepo", "duration": "18:45", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Turborepo makes managing monorepos fast. This lesson covers setting up a Turborepo workspace, sharing TypeScript types and UI components as internal packages, configuring the build pipeline with caching, and structuring a real full-stack monorepo with apps and packages." },
+      { "id": "lesson-9-6", "title": "Deploying to Vercel and PlanetScale", "duration": "16:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Deploying a full-stack TypeScript app to production requires the right platform choices. This lesson covers deploying a Next.js app to Vercel, connecting a PlanetScale serverless MySQL database, environment variable management, preview deployments for PRs, and monitoring basics." }
+    ],
+    "tags": ["TypeScript", "tRPC", "Prisma", "Full-Stack"]
+  },
+  {
+    "id": "course-10",
+    "title": "Digital Marketing & SEO Masterclass",
+    "description": "Comprehensive guide to digital marketing: SEO, Google Ads, social media marketing, content strategy, email campaigns, and analytics. Learn to grow any business online with measurable results.",
+    "shortDescription": "Master SEO, Google Ads, social media, and digital marketing analytics.",
+    "category": "Marketing",
+    "level": "Beginner",
+    "instructor": "David Park",
+    "instructorAvatar": "https://i.pravatar.cc/150?img=7",
+    "instructorId": "teacher-10",
+    "duration": "16h 30m",
+    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    "rating": 4.6,
+    "students": 18900,
+    "lessons": [
+      {
+        "id": "lesson-10-1",
+        "title": "Digital Marketing Overview",
+        "duration": "12:00",
+        "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA",
+        "description": "Digital marketing encompasses all marketing efforts that use the internet or electronic devices. This lesson maps the full digital marketing landscape: SEO, SEM, content marketing, social media, email, influencer marketing, and affiliate marketing — and explains how they work together in a cohesive strategy.",
+        "questions": [
+          {
+            "id": "q-10-1-1",
+            "type": "multiple-choice",
+            "question": "What is the primary difference between SEO and SEM?",
+            "options": [
+              { "id": "a", "text": "SEO is for social media, SEM is for search engines" },
+              { "id": "b", "text": "SEO targets organic search results, SEM includes paid ads" },
+              { "id": "c", "text": "SEO is faster than SEM" },
+              { "id": "d", "text": "SEM is only for small businesses" }
+            ],
+            "correctAnswer": "b",
+            "explanation": "SEO (Search Engine Optimization) aims for organic (unpaid) search rankings. SEM (Search Engine Marketing) encompasses both SEO and paid search advertising like Google Ads."
+          }
+        ]
+      },
+      { "id": "lesson-10-2", "title": "SEO Fundamentals", "duration": "20:30", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "SEO is the practice of optimizing websites to rank higher in search engine results pages. This lesson covers on-page SEO (title tags, meta descriptions, headers, content), technical SEO (site speed, mobile-friendliness, structured data), and off-page SEO (backlinks, domain authority)." },
+      { "id": "lesson-10-3", "title": "Google Ads Campaigns", "duration": "25:15", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Google Ads is the largest digital advertising platform. This lesson covers campaign types (Search, Display, Shopping, Video), keyword research and match types, quality score, ad copywriting best practices, bidding strategies, conversion tracking, and how to optimize campaigns for ROI." },
+      { "id": "lesson-10-4", "title": "Social Media Strategy", "duration": "18:40", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Social media marketing builds brand awareness and community. This lesson covers platform selection (choosing the right channels for your audience), content calendar creation, organic vs paid social, community management, influencer partnerships, and measuring social media ROI." },
+      { "id": "lesson-10-5", "title": "Email Marketing with Mailchimp", "duration": "16:00", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Email marketing delivers the highest ROI of any digital channel. This lesson covers building and segmenting an email list, writing high-converting subject lines, designing email templates in Mailchimp, automating drip campaigns, A/B testing, and interpreting open/click metrics." },
+      { "id": "lesson-10-6", "title": "Analytics and Reporting", "duration": "22:20", "videoUrl": "https://www.youtube.com/embed/dGcsHMXbSOA", "description": "Data-driven marketing requires understanding your metrics. This lesson covers setting up Google Analytics 4, defining KPIs, creating conversion goals, building a marketing dashboard, interpreting traffic sources, and using data to make informed decisions about channel investment." }
+    ],
+    "tags": ["SEO", "Google Ads", "Social Media", "Marketing"]
+  }
+]

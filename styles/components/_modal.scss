@@ -1,0 +1,57 @@
+.modal {
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 1000;
+    @include flex-center;
+    padding: $space-4;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  &__content {
+    background: $white;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-2xl;
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    @include custom-scrollbar;
+    position: relative;
+  }
+
+  &__header {
+    padding: $space-6 $space-6 0;
+    @include flex-between;
+
+    h2 {
+      font-size: $text-xl;
+      font-weight: $font-bold;
+    }
+
+    &-close {
+      color: $text-muted;
+      transition: color $transition;
+      padding: $space-1;
+      border-radius: $radius;
+
+      &:hover {
+        color: $text-primary;
+        background: $gray-100;
+      }
+    }
+  }
+
+  &__body {
+    padding: $space-6;
+  }
+
+  &__footer {
+    padding: 0 $space-6 $space-6;
+    display: flex;
+    gap: $space-3;
+    justify-content: flex-end;
+  }
+}

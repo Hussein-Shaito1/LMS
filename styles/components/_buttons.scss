@@ -1,0 +1,127 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: $space-3 $space-5;
+  border-radius: $radius;
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  line-height: 1;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: $transition-all;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Sizes
+  &--sm {
+    padding: $space-2 $space-3;
+    font-size: $text-xs;
+  }
+
+  &--lg {
+    padding: $space-4 $space-8;
+    font-size: $text-base;
+    border-radius: $radius-md;
+  }
+
+  &--icon {
+    padding: $space-2;
+    aspect-ratio: 1;
+    border-radius: $radius;
+  }
+
+  // Variants
+  &--primary {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+
+    &:hover {
+      background: $primary-dark;
+      border-color: $primary-dark;
+      box-shadow: $shadow-primary;
+      transform: translateY(-1px);
+    }
+  }
+
+  &--secondary {
+    background: $white;
+    color: $primary;
+    border-color: $border;
+
+    &:hover {
+      border-color: $primary;
+      background: $primary-lighter;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $text-secondary;
+    border-color: transparent;
+
+    &:hover {
+      background: $gray-100;
+      color: $text-primary;
+    }
+  }
+
+  &--danger {
+    background: $error;
+    color: $white;
+    border-color: $error;
+
+    &:hover {
+      background: darken(#ef4444, 8%);
+    }
+  }
+
+  &--success {
+    background: $success;
+    color: $white;
+    border-color: $success;
+
+    &:hover {
+      background: darken(#10b981, 8%);
+    }
+  }
+
+  // Full width
+  &--full {
+    width: 100%;
+  }
+
+  // Loading state
+  &--loading {
+    pointer-events: none;
+
+    .btn__spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+  }
+}
