@@ -172,8 +172,7 @@ export default function Header() {
                     <User size={20} /> Profile
                   </Link>
                   <button
-                    className="header__mobile-menu-link"
-                    style={{ color: 'var(--error, #ef4444)', background: 'none', width: '100%', textAlign: 'left' }}
+                    className="header__mobile-menu-link header__mobile-menu-link--danger"
                     onClick={handleLogout}
                   >
                     <LogOut size={20} /> Log Out
@@ -194,10 +193,7 @@ export default function Header() {
 
           {/* Backdrop */}
           <div
-            style={{
-              position: 'fixed', inset: 0, top: 70, background: 'rgba(15,23,42,0.4)',
-              zIndex: 98, backdropFilter: 'blur(2px)'
-            }}
+            className="header__backdrop"
             onClick={() => setMenuOpen(false)}
           />
         </>

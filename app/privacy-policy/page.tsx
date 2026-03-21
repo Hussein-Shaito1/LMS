@@ -49,20 +49,20 @@ export default function PrivacyPolicyPage() {
   return (
     <PageTransition>
       <div className="page">
-        <div className="container" style={{ maxWidth: 720 }}>
+        <div className="container container--narrow">
           <div className="page__header">
             <h1>Privacy Policy</h1>
             <p>Last updated: January 1, 2025</p>
           </div>
 
           <div className="card">
-            <p style={{ marginBottom: '2rem' }}>
+            <p className="policy-intro">
               At LearnHub, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we handle information collected when you use our platform.
             </p>
 
             {sections.map(({ title, content }) => (
-              <div key={title} style={{ marginBottom: '2rem' }}>
-                <h3 style={{ marginBottom: '0.75rem', fontSize: '1.125rem' }}>{title}</h3>
+              <div key={title} className="policy-section">
+                <h3>{title}</h3>
                 <p>{content}</p>
               </div>
             ))}

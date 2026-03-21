@@ -57,15 +57,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   return (
     <PageTransition>
       {/* Hero banner */}
-      <div style={{
-        background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-        color: 'white',
-        padding: '3rem 0',
-      }}>
+      <div className="course-hero">
         <div className="container">
           <div className="course-hero-grid">
             <div>
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+              <div className="badge-row">
                 <span className={`badge badge--${course.category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}>
                   {course.category}
                 </span>
@@ -74,46 +70,38 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </span>
               </div>
 
-              <h1 style={{ color: 'white', fontSize: '2rem', marginBottom: '1rem', lineHeight: 1.3 }}>
-                {course.title}
-              </h1>
+              <h1 className="course-detail-title">{course.title}</h1>
 
-              <p style={{ color: 'rgba(255,255,255,0.75)', marginBottom: '1.5rem', maxWidth: 640 }}>
-                {course.description}
-              </p>
+              <p className="course-detail-desc">{course.description}</p>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+              <div className="course-meta">
                 <StarRating rating={course.rating} />
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)' }}>
+                <span className="course-meta__stat">
                   <Users size={14} /> {course.students.toLocaleString()} students
                 </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)' }}>
+                <span className="course-meta__stat">
                   <Clock size={14} /> {course.duration}
                 </span>
-                <span style={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)' }}>
+                <span className="course-meta__stat">
                   {course.lessons.length} lessons
                 </span>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div className="course-instructor-row">
                 <Image
                   src={course.instructorAvatar}
                   alt={course.instructor}
                   width={36}
                   height={36}
-                  style={{ borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.3)' }}
                 />
-                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.875rem' }}>
-                  Taught by <strong style={{ color: 'white' }}>{course.instructor}</strong>
+                <span className="course-instructor-row__text">
+                  Taught by <strong>{course.instructor}</strong>
                 </span>
               </div>
             </div>
 
             {/* Thumbnail */}
-            <div style={{
-              width: 280, borderRadius: '0.75rem', overflow: 'hidden',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.5)', flexShrink: 0,
-            }} className="max-md-hidden">
+            <div className="course-hero__thumbnail max-md-hidden">
               <Image
                 src={course.thumbnail}
                 alt={course.title}
@@ -126,16 +114,16 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
         </div>
       </div>
 
-      <div className="container" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
+      <div className="container course-body">
         <div className="course-body-grid">
           {/* Main content */}
           <div>
             {/* Progress (if enrolled) */}
             {enrolled && (
-              <div className="card" style={{ marginBottom: '2rem' }}>
-                <h3 style={{ marginBottom: '1rem' }}>Your Progress</h3>
+              <div className="card course-progress-card">
+                <h3>Your Progress</h3>
                 <ProgressBar percent={progressPct} label="Course completion" />
-                <p style={{ marginTop: '0.75rem', fontSize: '0.875rem' }}>
+                <p>
                   {completedLessons.length} of {course.lessons.length} lessons completed
                 </p>
               </div>
@@ -143,9 +131,9 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Lessons */}
             <div className="card">
-              <h2 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <h2 className="lessons-card-title">
                 <BookOpen size={20} /> Course Content
-                <span style={{ fontSize: '0.875rem', fontWeight: 400, color: '#64748b', marginLeft: 'auto' }}>
+                <span className="lessons-card-title__count">
                   {course.lessons.length} lessons · {course.duration}
                 </span>
               </h2>
@@ -171,9 +159,9 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                       {isCompleted && <CheckCircle className="lesson-item__check" size={20} />}
                     </Link>
                   ) : (
-                    <div key={lesson.id} className="lesson-item" style={{ opacity: 0.7, cursor: 'default' }}>
+                    <div key={lesson.id} className="lesson-item lesson-item--locked">
                       <span className="lesson-item__number">{idx + 1}</span>
-                      <div className="lesson-item__icon" style={{ background: '#f1f5f9', color: '#94a3b8' }}>
+                      <div className="lesson-item__icon lesson-item__icon--locked">
                         <Play size={16} />
                       </div>
                       <div className="lesson-item__info">
@@ -187,7 +175,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             </div>
 
             {/* Tags */}
-            <div style={{ marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div className="tags-row">
               {course.tags.map((tag) => (
                 <span key={tag} className="badge badge--gray">{tag}</span>
               ))}
@@ -199,11 +187,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             <div className="card">
               {enrolled ? (
                 <>
-                  <div style={{
-                    background: '#d1fae5', borderRadius: '0.5rem', padding: '0.75rem 1rem',
-                    marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem',
-                    color: '#059669', fontWeight: 600, fontSize: '0.875rem',
-                  }}>
+                  <div className="enrolled-banner">
                     <CheckCircle size={16} /> You are enrolled
                   </div>
                   <Link
@@ -213,7 +197,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     <Play size={18} />
                     {completedLessons.length > 0 ? 'Continue Learning' : 'Start Learning'}
                   </Link>
-                  <div style={{ marginTop: '1rem' }}>
+                  <div className="sidebar-progress">
                     <ProgressBar percent={progressPct} label="Progress" size="sm" />
                   </div>
                 </>
@@ -226,22 +210,21 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
               <button
                 onClick={handleFavorite}
-                className="btn btn--secondary btn--full"
-                style={{ marginTop: '0.75rem' }}
+                className="btn btn--secondary btn--full sidebar-fav-btn"
               >
-                <Heart size={16} fill={favorite ? 'currentColor' : 'none'} style={{ color: favorite ? '#ef4444' : undefined }} />
+                <Heart size={16} fill={favorite ? 'currentColor' : 'none'} className={favorite ? 'text-red' : ''} />
                 {favorite ? 'Saved to Favorites' : 'Save to Favorites'}
               </button>
 
-              <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div className="course-info-list">
                 {[
                   { icon: BookOpen, text: `${course.lessons.length} lessons` },
                   { icon: Clock, text: course.duration },
                   { icon: Users, text: `${course.students.toLocaleString()} students` },
                   { icon: CheckCircle, text: 'Certificate on completion' },
                 ].map(({ icon: Icon, text }) => (
-                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem', color: '#475569' }}>
-                    <Icon size={16} style={{ color: '#6366f1', flexShrink: 0 }} />
+                  <div key={text} className="course-info-item">
+                    <Icon size={16} className="course-info-item__icon" />
                     {text}
                   </div>
                 ))}

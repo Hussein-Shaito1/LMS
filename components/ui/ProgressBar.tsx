@@ -27,7 +27,7 @@ export default function ProgressBar({ percent, label, showLabel = true, size = '
     return () => { if (el) observer.unobserve(el) }
   }, [percent])
 
-  const height = size === 'sm' ? 4 : size === 'lg' ? 12 : 8
+  const sizeClass = size === 'sm' ? 'progress__bar--sm' : size === 'lg' ? 'progress__bar--lg' : ''
 
   return (
     <div ref={ref}>
@@ -37,7 +37,7 @@ export default function ProgressBar({ percent, label, showLabel = true, size = '
           <span className="progress__label-value">{percent}%</span>
         </div>
       )}
-      <div className="progress__bar" style={{ height }}>
+      <div className={`progress__bar${sizeClass ? ` ${sizeClass}` : ''}`}>
         <div
           className="progress__fill"
           style={{ width: `${animated}%` }}

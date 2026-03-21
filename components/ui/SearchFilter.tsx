@@ -26,16 +26,10 @@ export default function SearchFilter({
   const levels = ['All', ...getLevels()]
 
   return (
-    <div style={{ marginBottom: 'var(--space-8, 2rem)' }}>
-      <div style={{
-        display: 'flex',
-        gap: '1rem',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        marginBottom: '1rem',
-      }}>
+    <div className="search-filter">
+      <div className="search-filter__bar">
         {/* Search */}
-        <div className="search-bar" style={{ flex: '1', minWidth: '240px' }}>
+        <div className="search-bar">
           <Search className="search-bar__icon" size={18} />
           <input
             type="text"
@@ -50,7 +44,6 @@ export default function SearchFilter({
           className="select"
           value={category}
           onChange={(e) => onCategory(e.target.value)}
-          style={{ width: 'auto', minWidth: '160px' }}
         >
           {categories.map((c) => (
             <option key={c} value={c}>{c}</option>
@@ -62,7 +55,6 @@ export default function SearchFilter({
           className="select"
           value={level}
           onChange={(e) => onLevel(e.target.value)}
-          style={{ width: 'auto', minWidth: '140px' }}
         >
           {levels.map((l) => (
             <option key={l} value={l}>{l}</option>
@@ -71,7 +63,7 @@ export default function SearchFilter({
       </div>
 
       {totalResults !== undefined && (
-        <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary, #64748b)' }}>
+        <p className="search-filter__results">
           Showing <strong>{totalResults}</strong> course{totalResults !== 1 ? 's' : ''}
           {query && ` for "${query}"`}
         </p>

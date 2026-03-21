@@ -1,0 +1,1045 @@
+// ============================================
+// LAYOUT ROOT
+// ============================================
+
+.main-content {
+  min-height: calc(100vh - #{$header-height});
+}
+
+// ============================================
+// SECTION MODIFIERS
+// ============================================
+
+.section--white { background: $white; }
+.section--center { text-align: center; }
+
+// ============================================
+// FEATURES GRID  (home + about)
+// ============================================
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $space-8;
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: $space-8;
+}
+
+.feature-card {
+  text-align: center;
+
+  &__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: $primary-lighter;
+    @include flex-center;
+    margin: 0 auto $space-4;
+    color: $primary;
+  }
+
+  h4 { margin-bottom: $space-2; }
+  p  { font-size: $text-sm; }
+}
+
+// ============================================
+// CTA SECTION
+// ============================================
+
+.cta-section {
+  background: linear-gradient(135deg, $primary, $secondary);
+  padding: $space-20 0;
+  color: $white;
+  text-align: center;
+
+  h2 {
+    color: $white;
+    margin-bottom: $space-4;
+    font-size: $text-4xl;
+
+    @include max-md { font-size: $text-3xl; }
+  }
+
+  &__desc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: $text-lg;
+    max-width: 480px;
+    margin: 0 auto $space-8;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-4;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: $space-8;
+  }
+}
+
+.btn--white {
+  background: $white;
+  color: $primary;
+  border-color: $white;
+
+  &:hover {
+    background: $gray-50;
+    border-color: $gray-50;
+  }
+}
+
+.btn--outline-white {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: $white;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// ============================================
+// ABOUT PAGE
+// ============================================
+
+.about-hero {
+  background: linear-gradient(135deg, $primary-lighter 0%, $gray-50 60%);
+  padding: $space-20 0;
+  text-align: center;
+
+  &__eyebrow {
+    display: inline-block;
+    background: $primary-lighter;
+    color: $primary;
+    border-radius: $radius-full;
+    padding: $space-1 $space-4;
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    margin-bottom: $space-4;
+  }
+
+  h1 {
+    font-size: $text-5xl;
+    margin-bottom: $space-6;
+    line-height: 1.2;
+
+    span { color: $primary; }
+
+    @include max-md { font-size: $text-3xl; }
+  }
+
+  p {
+    font-size: $text-lg;
+    max-width: 620px;
+    margin: 0 auto $space-8;
+    color: $text-secondary;
+  }
+}
+
+.stats-dark {
+  background: $gray-900;
+  color: $white;
+  padding: $space-20 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: $space-8;
+    text-align: center;
+  }
+
+  &__value {
+    font-size: 2.5rem;
+    font-weight: $font-extrabold;
+    color: $primary-light;
+    margin-bottom: $space-2;
+  }
+
+  &__label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: $text-sm;
+  }
+}
+
+// ============================================
+// CONTACT PAGE
+// ============================================
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: $space-12;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
+
+  @include max-md { grid-template-columns: 1fr; }
+}
+
+.contact-info-card {
+  margin-bottom: $space-4;
+
+  h3 { margin-bottom: $space-6; }
+}
+
+.contact-item {
+  display: flex;
+  gap: $space-4;
+  margin-bottom: $space-5;
+  align-items: flex-start;
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: $radius;
+    background: $primary-lighter;
+    @include flex-center;
+    color: $primary;
+    flex-shrink: 0;
+  }
+
+  &__label {
+    font-size: 0.8125rem;
+    color: $text-muted;
+    margin-bottom: 2px;
+  }
+
+  &__value {
+    font-size: $text-sm;
+    font-weight: $font-medium;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-4;
+
+  @include max-md { grid-template-columns: 1fr; }
+}
+
+// ============================================
+// 404 NOT FOUND
+// ============================================
+
+.not-found {
+  min-height: 80vh;
+  @include flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: $space-8;
+
+  &__code {
+    font-size: 6rem;
+    font-weight: $font-extrabold;
+    color: $primary-lighter;
+    line-height: 1;
+    margin-bottom: $space-4;
+  }
+
+  h1 { margin-bottom: $space-3; }
+
+  p {
+    color: $text-secondary;
+    margin-bottom: $space-8;
+    max-width: 400px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-4;
+  }
+}
+
+// ============================================
+// POLICY PAGES  (terms + privacy)
+// ============================================
+
+.container--narrow {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.container--sm {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.policy-intro {
+  margin-bottom: $space-8;
+}
+
+.policy-section {
+  margin-bottom: $space-8;
+
+  h3 {
+    margin-bottom: $space-3;
+    font-size: $text-lg;
+  }
+}
+
+// ============================================
+// AUTH PAGES
+// ============================================
+
+.demo-credentials {
+  background: $primary-lighter;
+  border-radius: $radius;
+  padding: $space-3 $space-4;
+  margin-bottom: $space-6;
+  font-size: 0.8125rem;
+  color: $primary-dark;
+}
+
+// ============================================
+// EDIT PROFILE
+// ============================================
+
+.edit-header {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  margin-bottom: $space-8;
+
+  h1 { margin: 0; }
+}
+
+.form__group--center {
+  align-items: center;
+}
+
+.avatar-picker {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  flex-wrap: wrap;
+}
+
+.avatar-current {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid $primary-lighter;
+}
+
+.avatar-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.avatar-option {
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color $transition;
+  background: none;
+
+  &--active { border-color: $primary; }
+
+  &__img {
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.input--readonly {
+  background: $gray-50;
+  color: $text-muted;
+  cursor: not-allowed;
+}
+
+.form__actions {
+  display: flex;
+  gap: $space-3;
+
+  .btn:first-child { flex: 1; }
+}
+
+// ============================================
+// PROFILE PAGE
+// ============================================
+
+.profile-card {
+  text-align: center;
+
+  .profile-avatar {
+    display: block;
+    width: 100px;
+    margin: 0 auto $space-4;
+  }
+
+  h2 { margin-bottom: $space-1; }
+}
+
+.profile-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  color: $text-secondary;
+  font-size: $text-sm;
+  margin-bottom: $space-3;
+}
+
+.profile-bio {
+  font-size: $text-sm;
+  color: $text-secondary;
+  margin-bottom: $space-4;
+}
+
+.profile-joined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  color: $text-muted;
+  font-size: 0.8125rem;
+  margin-bottom: $space-6;
+}
+
+.profile-side {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-4;
+
+  a {
+    font-size: $text-sm;
+    color: $primary;
+  }
+}
+
+.recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.recent-course-item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius;
+  border: 1px solid $border;
+  text-decoration: none;
+  transition: $transition-all;
+
+  &:hover {
+    background: $gray-50;
+    border-color: $primary-light;
+  }
+
+  img {
+    border-radius: $radius-sm;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: $text-primary;
+    margin-bottom: $space-1;
+    @include truncate;
+  }
+
+  &__pct {
+    font-size: $text-xs;
+    color: $text-secondary;
+  }
+}
+
+// ============================================
+// MY COURSES PAGE
+// ============================================
+
+.my-courses-stats {
+  margin-bottom: $space-10;
+}
+
+.courses-section {
+  margin-bottom: $space-12;
+
+  &__title {
+    font-size: $text-2xl;
+    font-weight: $font-semibold;
+    margin-bottom: $space-6;
+  }
+}
+
+// ============================================
+// TEACHER PAGE
+// ============================================
+
+.teacher-hero {
+  background: linear-gradient(135deg, $gray-800 0%, $gray-900 100%);
+  color: $white;
+  padding: $space-16 0;
+
+  &__inner {
+    display: flex;
+    gap: $space-10;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__avatar {
+    position: relative;
+    flex-shrink: 0;
+
+    &-img {
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  &__role {
+    color: $primary-light;
+    font-weight: $font-semibold;
+    font-size: $text-sm;
+    margin-bottom: $space-2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__name {
+    color: $white;
+    font-size: $text-4xl;
+    font-weight: $font-extrabold;
+    margin-bottom: $space-2;
+    line-height: $leading-tight;
+  }
+
+  &__title {
+    color: $gray-400;
+    font-size: $text-base;
+    margin-bottom: $space-5;
+  }
+
+  &__bio {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: $leading-relaxed;
+    max-width: 640px;
+    margin-bottom: $space-6;
+  }
+
+  &__contact {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: $primary-light;
+    font-size: $text-sm;
+    text-decoration: none;
+    transition: color $transition;
+
+    &:hover { color: $white; }
+  }
+
+  &__stats {
+    display: flex;
+    gap: $space-6;
+    flex-wrap: wrap;
+    align-self: center;
+  }
+}
+
+.teacher-stat {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-md;
+  padding: $space-5 $space-6;
+  text-align: center;
+  min-width: 100px;
+
+  &__icon {
+    color: $primary-light;
+    margin-bottom: $space-2;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__value {
+    font-size: $text-2xl;
+    font-weight: $font-extrabold;
+    color: $white;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: $text-xs;
+    color: $gray-400;
+    margin-top: $space-1;
+  }
+}
+
+.teacher-courses {
+  padding-top: $space-12;
+  padding-bottom: $space-16;
+}
+
+.section-heading-plain {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  margin-bottom: $space-6;
+}
+
+.empty-simple {
+  text-align: center;
+  padding: $space-16;
+  color: $text-secondary;
+
+  svg {
+    opacity: 0.3;
+    display: block;
+    margin: 0 auto $space-4;
+  }
+}
+
+// ============================================
+// COURSE DETAIL PAGE
+// ============================================
+
+.course-hero {
+  background: linear-gradient(135deg, $gray-800 0%, $gray-900 100%);
+  color: $white;
+  padding: $space-12 0;
+
+  &__thumbnail {
+    width: 280px;
+    border-radius: $radius-md;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+  }
+}
+
+.badge-row {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+  margin-bottom: $space-4;
+}
+
+.course-detail-title {
+  color: $white;
+  font-size: $text-3xl;
+  margin-bottom: $space-4;
+  line-height: 1.3;
+
+  @include max-md { font-size: $text-2xl; }
+}
+
+.course-detail-desc {
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: $space-6;
+  max-width: 640px;
+}
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: $space-6;
+  flex-wrap: wrap;
+  margin-bottom: $space-6;
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: $text-sm;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.course-instructor-row {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  &__text {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: $text-sm;
+
+    strong { color: $white; }
+  }
+}
+
+.course-body {
+  padding-top: $space-12;
+  padding-bottom: $space-16;
+}
+
+.course-progress-card {
+  margin-bottom: $space-8;
+
+  h3 { margin-bottom: $space-4; }
+  p  { margin-top: $space-3; font-size: $text-sm; }
+}
+
+.lessons-card-title {
+  margin-bottom: $space-6;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+
+  &__count {
+    font-size: $text-sm;
+    font-weight: $font-normal;
+    color: $text-secondary;
+    margin-left: auto;
+  }
+}
+
+.tags-row {
+  margin-top: $space-6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.enrolled-banner {
+  background: $success-light;
+  border-radius: $radius;
+  padding: $space-3 $space-4;
+  margin-bottom: $space-4;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  color: $success;
+  font-weight: $font-semibold;
+  font-size: $text-sm;
+}
+
+.sidebar-fav-btn { margin-top: $space-3; }
+.sidebar-progress { margin-top: $space-4; }
+
+.course-info-list {
+  margin-top: $space-6;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.course-info-item {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  font-size: $text-sm;
+  color: $text-secondary;
+
+  &__icon {
+    color: $primary;
+    flex-shrink: 0;
+  }
+}
+
+// ============================================
+// LESSON PAGE
+// ============================================
+
+.lesson-page {
+  background: $gray-50;
+  min-height: calc(100vh - #{$header-height});
+}
+
+.lesson-topbar {
+  background: $white;
+  border-bottom: 1px solid $border;
+  padding: $space-3 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    color: $text-secondary;
+    font-size: $text-sm;
+    text-decoration: none;
+    flex-shrink: 0;
+
+    &:hover { color: $primary; }
+  }
+
+  &__progress { flex: 1; }
+
+  &__count {
+    font-size: 0.8125rem;
+    color: $text-secondary;
+    white-space: nowrap;
+  }
+}
+
+.lesson-body {
+  padding-top: $space-8;
+  padding-bottom: $space-16;
+}
+
+.lesson-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: $space-8;
+  align-items: start;
+
+  @include max-lg { grid-template-columns: 1fr; }
+}
+
+.lesson-video {
+  margin-bottom: $space-6;
+}
+
+.lesson-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $space-4;
+  flex-wrap: wrap;
+
+  &__meta {
+    font-size: 0.8125rem;
+    color: $primary;
+    font-weight: $font-semibold;
+    margin-bottom: $space-1;
+  }
+
+  h1 {
+    font-size: $text-2xl;
+    margin-bottom: $space-1;
+  }
+
+  &__duration {
+    font-size: $text-sm;
+    color: $text-secondary;
+  }
+}
+
+.lesson-description {
+  margin-top: $space-4;
+  padding-top: $space-4;
+  border-top: 1px solid $border;
+  font-size: 0.9375rem;
+  color: $text-secondary;
+  line-height: $leading-relaxed;
+}
+
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-4;
+  margin-top: $space-6;
+  padding-top: $space-6;
+  border-top: 1px solid $border;
+}
+
+.lesson-sidebar {
+  max-height: 80vh;
+  overflow-y: auto;
+  position: sticky;
+  top: 90px;
+
+  @include max-lg {
+    position: static;
+    max-height: none;
+  }
+
+  h3 {
+    margin-bottom: $space-4;
+    font-size: $text-base;
+  }
+}
+
+// ============================================
+// COURSES LIST PAGE
+// ============================================
+
+.courses-page {
+  padding-top: $space-10;
+  padding-bottom: $space-16;
+
+  &__header {
+    margin-bottom: $space-8;
+
+    h1 {
+      font-size: $text-3xl;
+      font-weight: $font-extrabold;
+      margin-bottom: $space-2;
+    }
+
+    p { color: $text-secondary; }
+  }
+}
+
+.filter-bar {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: $space-6;
+
+  .search-bar {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .select { min-width: 160px; }
+}
+
+.filter-badge {
+  background: $white;
+  color: $primary;
+  border-radius: $radius-full;
+  font-size: 0.7rem;
+  font-weight: $font-bold;
+  padding: 0 $space-2;
+  line-height: 1.4;
+}
+
+.filter-results {
+  font-size: $text-sm;
+  color: $text-secondary;
+  margin-bottom: $space-5;
+}
+
+.filter-empty {
+  text-align: center;
+  padding: $space-16;
+  color: $text-muted;
+
+  svg {
+    opacity: 0.3;
+    display: block;
+    margin: 0 auto $space-4;
+  }
+
+  p { font-size: $text-base; }
+
+  .btn { margin-top: $space-4; }
+}
+
+.filter-group {
+  &__label {
+    font-size: $text-xs;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $text-muted;
+    margin-bottom: $space-3;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  .badge {
+    cursor: pointer;
+    border: none;
+    font-size: $text-xs;
+  }
+
+  .select {
+    width: 100%;
+    font-size: 0.8125rem;
+  }
+}
+
+// ============================================
+// SEARCH FILTER COMPONENT
+// ============================================
+
+.search-filter {
+  margin-bottom: $space-8;
+
+  &__bar {
+    display: flex;
+    gap: $space-4;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: $space-4;
+
+    .search-bar {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .select {
+      width: auto;
+      min-width: 160px;
+
+      &:last-of-type { min-width: 140px; }
+    }
+  }
+
+  &__results {
+    font-size: $text-sm;
+    color: $text-secondary;
+  }
+}
+
+// ============================================
+// STAR RATING
+// ============================================
+
+.stars__value {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  margin-left: $space-1;
+}
+
+// ============================================
+// UTILITY
+// ============================================
+
+.text-red { color: #ef4444; }
+
+// ============================================
+// QUESTION SECTION
+// ============================================
+
+.explanation-toggle__icon {
+  transition: transform $transition;
+
+  &--open { transform: rotate(180deg); }
+}

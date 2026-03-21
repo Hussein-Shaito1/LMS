@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation'
 import { BookOpen, Eye, EyeOff, Mail, Lock } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { useToast } from '@/context/ToastContext'
-import type { Metadata } from 'next'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -57,11 +56,7 @@ export default function LoginPage() {
           <p>Sign in to continue your learning journey.</p>
         </div>
 
-        {/* Demo credentials */}
-        <div style={{
-          background: '#e0e7ff', borderRadius: '0.5rem', padding: '0.75rem 1rem',
-          marginBottom: '1.5rem', fontSize: '0.8125rem', color: '#4f46e5',
-        }}>
+        <div className="demo-credentials">
           <strong>Demo:</strong> alex@example.com / password123
         </div>
 

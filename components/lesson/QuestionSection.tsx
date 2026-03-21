@@ -223,10 +223,7 @@ function QuestionCard({
             >
               <ChevronDown
                 size={16}
-                style={{
-                  transform: showExplanation ? 'rotate(180deg)' : 'rotate(0deg)',
-                  transition: 'transform 0.2s',
-                }}
+                className={`explanation-toggle__icon${showExplanation ? ' explanation-toggle__icon--open' : ''}`}
               />
               {showExplanation ? 'Hide' : 'Show'} explanation
             </button>
@@ -372,9 +369,8 @@ function SortingQuestion({
             <Reorder.Item
               key={item.id}
               value={item}
-              className={`sort-item ${isAtCorrectPos ? 'sort-item--correct' : ''} ${isWrongPos ? 'sort-item--incorrect' : ''}`}
+              className={`sort-item ${isAtCorrectPos ? 'sort-item--correct' : ''} ${isWrongPos ? 'sort-item--incorrect' : ''} ${submitted ? 'sort-item--submitted' : ''}`}
               whileDrag={{ scale: 1.02, boxShadow: '0 8px 24px rgba(0,0,0,0.12)', zIndex: 10 }}
-              style={{ cursor: submitted ? 'default' : 'grab' }}
             >
               <GripVertical size={16} className="sort-item__grip" />
               <span className="sort-item__pos">{idx + 1}</span>

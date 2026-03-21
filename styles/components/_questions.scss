@@ -355,7 +355,10 @@
   font-size: 0.875rem;
   color: $text-primary;
   user-select: none;
+  cursor: grab;
   transition: border-color $transition;
+
+  &--submitted { cursor: default; }
 
   &--correct {
     border-color: $success;

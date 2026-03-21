@@ -47,23 +47,18 @@ export default function CoursesPage() {
 
   return (
     <PageTransition>
-      <div className="container" style={{ paddingTop: '2.5rem', paddingBottom: '4rem' }}>
+      <div className="container courses-page">
 
         {/* Page header */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '0.5rem' }}>All Courses</h1>
-          <p style={{ color: '#64748b', fontSize: '1rem' }}>
-            Explore our full library of courses across every topic.
-          </p>
+        <div className="courses-page__header">
+          <h1>All Courses</h1>
+          <p>Explore our full library of courses across every topic.</p>
         </div>
 
         {/* Top bar: search + sort + filter toggle */}
-        <div style={{
-          display: 'flex', gap: '0.75rem', flexWrap: 'wrap',
-          alignItems: 'center', marginBottom: '1.5rem',
-        }}>
+        <div className="filter-bar">
           {/* Search */}
-          <div className="search-bar" style={{ flex: '1', minWidth: '220px' }}>
+          <div className="search-bar">
             <Search className="search-bar__icon" size={18} />
             <input
               type="text"
@@ -78,7 +73,6 @@ export default function CoursesPage() {
             className="select"
             value={sort}
             onChange={(e) => setSort(e.target.value as SortOption)}
-            style={{ minWidth: 160 }}
           >
             <option value="popular">Most Popular</option>
             <option value="rating">Highest Rated</option>
@@ -90,15 +84,11 @@ export default function CoursesPage() {
           <button
             className={`btn ${sidebarOpen ? 'btn--primary' : 'btn--secondary'} btn--sm`}
             onClick={() => setSidebarOpen((v) => !v)}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}
           >
             <SlidersHorizontal size={15} />
             Filters
             {hasActiveFilters && (
-              <span style={{
-                background: 'white', color: '#6366f1', borderRadius: '9999px',
-                fontSize: '0.7rem', fontWeight: 700, padding: '0 0.375rem', lineHeight: '1.4',
-              }}>
+              <span className="filter-badge">
                 {[
                   level !== 'All' && 1,
                   category !== 'All' && 1,
@@ -110,7 +100,7 @@ export default function CoursesPage() {
           </button>
 
           {hasActiveFilters && (
-            <button className="btn btn--ghost btn--sm" onClick={clearAll} style={{ gap: '0.375rem' }}>
+            <button className="btn btn--ghost btn--sm" onClick={clearAll}>
               <X size={14} /> Clear
             </button>
           )}
@@ -121,47 +111,44 @@ export default function CoursesPage() {
           {/* Sidebar filters */}
           {sidebarOpen && (
             <motion.aside
-              className="courses-layout__sidebar"
+              className="courses-layout__sidebar card"
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -16 }}
               transition={{ duration: 0.2 }}
-              style={{
-                background: 'white',
-                border: '1.5px solid #e2e8f0',
-                borderRadius: '1rem',
-                padding: '1.25rem',
-                display: 'flex', flexDirection: 'column', gap: '1.5rem',
-              }}
             >
               <FilterGroup label="Level">
-                {levels.map((l) => (
-                  <label key={l} className="filter-check">
-                    <input
-                      type="radio"
-                      name="level"
-                      value={l}
-                      checked={level === l}
-                      onChange={() => setLevel(l)}
-                    />
-                    {l}
-                  </label>
-                ))}
+                <div className="filter-group__items">
+                  {levels.map((l) => (
+                    <label key={l} className="filter-check">
+                      <input
+                        type="radio"
+                        name="level"
+                        value={l}
+                        checked={level === l}
+                        onChange={() => setLevel(l)}
+                      />
+                      {l}
+                    </label>
+                  ))}
+                </div>
               </FilterGroup>
 
               <FilterGroup label="Category">
-                {categories.map((c) => (
-                  <label key={c} className="filter-check">
-                    <input
-                      type="radio"
-                      name="category"
-                      value={c}
-                      checked={category === c}
-                      onChange={() => setCategory(c)}
-                    />
-                    {c}
-                  </label>
-                ))}
+                <div className="filter-group__items">
+                  {categories.map((c) => (
+                    <label key={c} className="filter-check">
+                      <input
+                        type="radio"
+                        name="category"
+                        value={c}
+                        checked={category === c}
+                        onChange={() => setCategory(c)}
+                      />
+                      {c}
+                    </label>
+                  ))}
+                </div>
               </FilterGroup>
 
               <FilterGroup label="Instructor">
@@ -169,7 +156,6 @@ export default function CoursesPage() {
                   className="select"
                   value={teacherId}
                   onChange={(e) => setTeacherId(e.target.value)}
-                  style={{ width: '100%', fontSize: '0.8125rem' }}
                 >
                   <option value="">All Instructors</option>
                   {allTeachers.map((t) => (
@@ -179,13 +165,12 @@ export default function CoursesPage() {
               </FilterGroup>
 
               <FilterGroup label="Tags">
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
+                <div className="filter-group__tags">
                   {allTags.map((tag) => (
                     <button
                       key={tag}
                       onClick={() => toggleTag(tag)}
                       className={`badge ${selectedTags.includes(tag) ? 'badge--primary' : 'badge--gray'}`}
-                      style={{ cursor: 'pointer', border: 'none', fontSize: '0.75rem' }}
                     >
                       {tag}
                     </button>
@@ -197,16 +182,16 @@ export default function CoursesPage() {
 
           {/* Results */}
           <div className="courses-layout__results">
-            <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '1.25rem' }}>
+            <p className="filter-results">
               Showing <strong>{results.length}</strong> course{results.length !== 1 ? 's' : ''}
               {query && ` for "${query}"`}
             </p>
 
             {results.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '4rem', color: '#94a3b8' }}>
-                <BookOpen size={48} style={{ opacity: 0.3, display: 'block', margin: '0 auto 1rem' }} />
-                <p style={{ fontSize: '1rem' }}>No courses match your filters.</p>
-                <button className="btn btn--secondary btn--sm" onClick={clearAll} style={{ marginTop: '1rem' }}>
+              <div className="filter-empty">
+                <BookOpen size={48} />
+                <p>No courses match your filters.</p>
+                <button className="btn btn--secondary btn--sm" onClick={clearAll}>
                   Clear filters
                 </button>
               </div>
@@ -237,16 +222,9 @@ export default function CoursesPage() {
 
 function FilterGroup({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div>
-      <p style={{
-        fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase',
-        letterSpacing: '0.06em', color: '#94a3b8', marginBottom: '0.625rem',
-      }}>
-        {label}
-      </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.375rem' }}>
-        {children}
-      </div>
+    <div className="filter-group">
+      <p className="filter-group__label">{label}</p>
+      {children}
     </div>
   )
 }

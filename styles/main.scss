@@ -20,6 +20,9 @@
 @import "layouts/footer";
 @import "layouts/sidebar";
 
+// Pages
+@import "pages/pages";
+
 // ============================================
 // UTILITY CLASSES
 // ============================================
@@ -315,6 +318,17 @@
     width: 18px;
     height: 18px;
     color: $success;
+  }
+
+  &--locked {
+    opacity: 0.7;
+    cursor: default;
+    pointer-events: none;
+
+    .lesson-item__icon--locked {
+      background: $gray-100;
+      color: $text-muted;
+    }
   }
 }
 

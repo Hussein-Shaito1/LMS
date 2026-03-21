@@ -5,6 +5,9 @@
     background: $gray-200;
     border-radius: $radius-full;
     overflow: hidden;
+
+    &--sm { height: 4px; }
+    &--lg { height: 12px; }
   }
 
   &__fill {

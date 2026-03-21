@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useAuth } from '@/context/AuthContext'
 import { useToast } from '@/context/ToastContext'
 import PageTransition from '@/components/ui/PageTransition'
-import { ArrowLeft, Camera, Mail, User } from 'lucide-react'
+import { ArrowLeft, Mail, User } from 'lucide-react'
 
 export default function EditProfilePage() {
   const router = useRouter()
@@ -39,7 +39,7 @@ export default function EditProfilePage() {
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
 
     setSaving(true)
-    await new Promise((r) => setTimeout(r, 600)) // Simulate async
+    await new Promise((r) => setTimeout(r, 600))
     updateProfile({ name: name.trim(), bio: bio.trim(), avatar })
     setSaving(false)
     showToast('Profile updated successfully!', 'success')
@@ -58,46 +58,41 @@ export default function EditProfilePage() {
   return (
     <PageTransition>
       <div className="page">
-        <div className="container" style={{ maxWidth: 640 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <div className="container container--sm">
+          <div className="edit-header">
             <Link href="/profile" className="btn btn--ghost btn--icon">
               <ArrowLeft size={20} />
             </Link>
-            <h1 style={{ margin: 0 }}>Edit Profile</h1>
+            <h1>Edit Profile</h1>
           </div>
 
           <div className="card">
             <form className="form" onSubmit={handleSubmit}>
               {/* Avatar */}
-              <div className="form__group" style={{ alignItems: 'center' }}>
+              <div className="form__group form__group--center">
                 <label className="form__label">Profile Photo</label>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <div className="avatar-picker">
                   <Image
                     src={avatar}
                     alt="Current avatar"
                     width={80}
                     height={80}
-                    style={{ borderRadius: '50%', objectFit: 'cover', border: '3px solid #e0e7ff' }}
+                    className="avatar-current"
                   />
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                  <div className="avatar-options">
                     {avatarOptions.map((url) => (
                       <button
                         key={url}
                         type="button"
                         onClick={() => setAvatar(url)}
-                        style={{
-                          padding: 0, borderRadius: '50%', cursor: 'pointer',
-                          border: avatar === url ? '3px solid #6366f1' : '3px solid transparent',
-                          transition: 'border-color 0.2s',
-                          background: 'none',
-                        }}
+                        className={`avatar-option${avatar === url ? ' avatar-option--active' : ''}`}
                       >
                         <Image
                           src={url}
                           alt="Avatar option"
                           width={44}
                           height={44}
-                          style={{ borderRadius: '50%', objectFit: 'cover', display: 'block' }}
+                          className="avatar-option__img"
                         />
                       </button>
                     ))}
@@ -129,10 +124,9 @@ export default function EditProfilePage() {
                   <Mail className="input-wrapper__icon" size={18} />
                   <input
                     type="email"
-                    className="input input--with-icon"
+                    className="input input--with-icon input--readonly"
                     value={user.email}
                     readOnly
-                    style={{ background: '#f8fafc', color: '#94a3b8', cursor: 'not-allowed' }}
                   />
                 </div>
                 <span className="form__hint">Email cannot be changed.</span>
@@ -153,12 +147,11 @@ export default function EditProfilePage() {
                 <span className="form__hint">{200 - bio.length} characters remaining</span>
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <div className="form__actions">
                 <button
                   type="submit"
                   className={`btn btn--primary btn--lg ${saving ? 'btn--loading' : ''}`}
                   disabled={saving}
-                  style={{ flex: 1 }}
                 >
                   {saving ? <><span className="btn__spinner" /> Saving...</> : 'Save Changes'}
                 </button>

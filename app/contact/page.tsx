@@ -37,33 +37,29 @@ export default function ContactPage() {
     <PageTransition>
       <div className="page">
         <div className="container">
-          <div className="page__header" style={{ textAlign: 'center' }}>
+          <div className="page__header section--center">
             <h1>Get in Touch</h1>
             <p>Have a question or feedback? We'd love to hear from you.</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '3rem', alignItems: 'start', maxWidth: 900, margin: '0 auto' }}>
+          <div className="contact-grid">
             {/* Info */}
             <div>
-              <div className="card" style={{ marginBottom: '1rem' }}>
-                <h3 style={{ marginBottom: '1.5rem' }}>Contact Information</h3>
+              <div className="card contact-info-card">
+                <h3>Contact Information</h3>
                 {[
                   { icon: Mail, label: 'Email', value: 'hello@learnhub.com' },
                   { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
                   { icon: MapPin, label: 'Location', value: 'San Francisco, CA' },
                   { icon: MessageSquare, label: 'Live Chat', value: 'Available 9am – 5pm PST' },
                 ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} style={{ display: 'flex', gap: '1rem', marginBottom: '1.25rem', alignItems: 'flex-start' }}>
-                    <div style={{
-                      width: 40, height: 40, borderRadius: '0.5rem', background: '#e0e7ff',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#6366f1', flexShrink: 0,
-                    }}>
+                  <div key={label} className="contact-item">
+                    <div className="contact-item__icon">
                       <Icon size={18} />
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.8125rem', color: '#94a3b8', marginBottom: '0.125rem' }}>{label}</div>
-                      <div style={{ fontSize: '0.875rem', fontWeight: 500 }}>{value}</div>
+                      <div className="contact-item__label">{label}</div>
+                      <div className="contact-item__value">{value}</div>
                     </div>
                   </div>
                 ))}
@@ -73,7 +69,7 @@ export default function ContactPage() {
             {/* Form */}
             <div className="card">
               <form className="form" onSubmit={handleSubmit} noValidate>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                <div className="form-row">
                   <div className="form__group">
                     <label className="form__label">Name</label>
                     <input className={`input ${errors.name ? 'input--error' : ''}`} placeholder="Your name" value={form.name} onChange={(e) => update('name', e.target.value)} />

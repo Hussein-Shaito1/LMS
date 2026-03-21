@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AuthProvider>
             <LMSProvider>
               <Header />
-              <main style={{ minHeight: 'calc(100vh - 70px)' }}>{children}</main>
+              <main className="main-content">{children}</main>
               <Footer />
               <ToastContainer />
             </LMSProvider>

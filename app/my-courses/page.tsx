@@ -2,15 +2,13 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 import { useAuth } from '@/context/AuthContext'
 import { useLMS } from '@/context/LMSContext'
 import { getCoursesByIds, getProgressPercent } from '@/lib/courses'
 import CourseCard from '@/components/ui/CourseCard'
 import PageTransition from '@/components/ui/PageTransition'
 import EmptyState from '@/components/ui/EmptyState'
-import { BookOpen, Play } from 'lucide-react'
-import type { Metadata } from 'next'
+import { BookOpen } from 'lucide-react'
 
 export default function MyCoursesPage() {
   const router = useRouter()
@@ -61,8 +59,7 @@ export default function MyCoursesPage() {
             />
           ) : (
             <>
-              {/* Stats */}
-              <div className="stats-grid" style={{ marginBottom: '2.5rem' }}>
+              <div className="stats-grid my-courses-stats">
                 {[
                   { label: 'Total Enrolled', value: courses.length, color: 'primary' },
                   { label: 'In Progress', value: inProgress.length, color: 'info' },
@@ -81,10 +78,9 @@ export default function MyCoursesPage() {
                 ))}
               </div>
 
-              {/* In Progress */}
               {inProgress.length > 0 && (
-                <div style={{ marginBottom: '3rem' }}>
-                  <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>Continue Learning</h2>
+                <div className="courses-section">
+                  <h2 className="courses-section__title">Continue Learning</h2>
                   <div className="courses-grid">
                     {inProgress.map((c) => (
                       <CourseCard key={c.id} course={c} showProgress />
@@ -93,10 +89,9 @@ export default function MyCoursesPage() {
                 </div>
               )}
 
-              {/* Not started */}
               {notStarted.length > 0 && (
-                <div style={{ marginBottom: '3rem' }}>
-                  <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>Not Started Yet</h2>
+                <div className="courses-section">
+                  <h2 className="courses-section__title">Not Started Yet</h2>
                   <div className="courses-grid">
                     {notStarted.map((c) => (
                       <CourseCard key={c.id} course={c} showProgress />
@@ -105,10 +100,9 @@ export default function MyCoursesPage() {
                 </div>
               )}
 
-              {/* Completed */}
               {finished.length > 0 && (
-                <div>
-                  <h2 style={{ marginBottom: '1.5rem', fontSize: '1.5rem' }}>Completed</h2>
+                <div className="courses-section">
+                  <h2 className="courses-section__title">Completed</h2>
                   <div className="courses-grid">
                     {finished.map((c) => (
                       <CourseCard key={c.id} course={c} showProgress />

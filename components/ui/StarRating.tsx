@@ -11,7 +11,7 @@ export default function StarRating({ rating, max = 5 }: { rating: number; max?: 
           stroke="currentColor"
         />
       ))}
-      <span style={{ fontSize: '0.875rem', fontWeight: 600, marginLeft: '0.25rem' }}>
+      <span className="stars__value">
         {rating}
       </span>
     </div>

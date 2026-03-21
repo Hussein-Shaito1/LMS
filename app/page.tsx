@@ -69,25 +69,21 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="section" style={{ background: 'white', paddingBlock: '4rem' }}>
+      <section className="section section--white">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+          <div className="features-grid">
             {[
               { icon: BookOpen, title: 'Structured Learning', desc: 'Follow a clear path from beginner to expert with well-organized lessons.' },
               { icon: Users, title: 'Community Driven', desc: 'Join thousands of students and track your progress alongside peers.' },
               { icon: Award, title: 'Track Progress', desc: 'Mark lessons complete and watch your progress bar grow with each step.' },
               { icon: Star, title: 'Top Instructors', desc: 'Learn from industry professionals with real-world teaching experience.' },
             ].map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="card" style={{ textAlign: 'center' }}>
-                <div style={{
-                  width: 56, height: 56, borderRadius: '50%',
-                  background: '#e0e7ff', display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', margin: '0 auto 1rem', color: '#6366f1',
-                }}>
+              <div key={title} className="card feature-card">
+                <div className="feature-card__icon">
                   <Icon size={24} />
                 </div>
-                <h4 style={{ marginBottom: '0.5rem' }}>{title}</h4>
-                <p style={{ fontSize: '0.875rem' }}>{desc}</p>
+                <h4>{title}</h4>
+                <p>{desc}</p>
               </div>
             ))}
           </div>
@@ -144,24 +140,17 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section style={{
-        background: 'linear-gradient(135deg, #6366f1, #0ea5e9)',
-        padding: '5rem 0',
-        color: 'white',
-        textAlign: 'center',
-      }}>
+      <section className="cta-section">
         <div className="container">
-          <h2 style={{ color: 'white', marginBottom: '1rem', fontSize: '2.25rem' }}>
-            Ready to Start Learning?
-          </h2>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.125rem', marginBottom: '2rem', maxWidth: 480, margin: '0 auto 2rem' }}>
+          <h2>Ready to Start Learning?</h2>
+          <p className="cta-section__desc">
             Create your free account and get instant access to all courses, progress tracking, and more.
           </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/register" className="btn btn--lg" style={{ background: 'white', color: '#6366f1' }}>
+          <div className="cta-section__actions">
+            <Link href="/register" className="btn btn--white btn--lg">
               Create Free Account
             </Link>
-            <Link href="#courses" className="btn btn--lg" style={{ border: '2px solid rgba(255,255,255,0.5)', color: 'white' }}>
+            <Link href="#courses" className="btn btn--outline-white btn--lg">
               Browse Courses
             </Link>
           </div>

@@ -37,28 +37,28 @@ export default function ProfilePage() {
         <div className="container">
           <div className="profile-grid">
             {/* Profile card */}
-            <div className="card" style={{ textAlign: 'center' }}>
-              <div className="profile-avatar" style={{ margin: '0 auto 1rem' }}>
+            <div className="card profile-card">
+              <div className="profile-avatar">
                 <Image
                   src={user.avatar}
                   alt={user.name}
                   width={100}
                   height={100}
                   className="profile-avatar__img"
-                  style={{ borderRadius: '50%', objectFit: 'cover' }}
                 />
               </div>
 
-              <h2 style={{ marginBottom: '0.25rem' }}>{user.name}</h2>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.375rem', color: '#64748b', fontSize: '0.875rem', marginBottom: '0.75rem' }}>
+              <h2>{user.name}</h2>
+
+              <div className="profile-email">
                 <Mail size={14} /> {user.email}
               </div>
 
               {user.bio && (
-                <p style={{ fontSize: '0.875rem', color: '#475569', marginBottom: '1rem' }}>{user.bio}</p>
+                <p className="profile-bio">{user.bio}</p>
               )}
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.375rem', color: '#94a3b8', fontSize: '0.8125rem', marginBottom: '1.5rem' }}>
+              <div className="profile-joined">
                 <Calendar size={13} /> Joined {new Date(user.joinedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
               </div>
 
@@ -68,8 +68,7 @@ export default function ProfilePage() {
             </div>
 
             {/* Stats and info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {/* Stats */}
+            <div className="profile-side">
               <div className="stats-grid">
                 {[
                   { icon: BookOpen, label: 'Courses Enrolled', value: enrolledCourses.length, color: 'primary' },
@@ -89,35 +88,27 @@ export default function ProfilePage() {
                 ))}
               </div>
 
-              {/* Recent courses */}
               {enrolledCourseObjs.length > 0 && (
                 <div className="card">
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                  <div className="card-header">
                     <h3>Recent Courses</h3>
-                    <Link href="/my-courses" style={{ fontSize: '0.875rem', color: '#6366f1' }}>View all →</Link>
+                    <Link href="/my-courses">View all →</Link>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <div className="recent-list">
                     {enrolledCourseObjs.slice(0, 4).map((course) => {
                       const completed = getCompletedLessons(course.id)
                       const pct = getProgressPercent(course.id, completed)
                       return (
-                        <Link
-                          key={course.id}
-                          href={`/course/${course.id}`}
-                          style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid #e2e8f0', textDecoration: 'none', transition: 'all 0.2s' }}
-                        >
+                        <Link key={course.id} href={`/course/${course.id}`} className="recent-course-item">
                           <Image
                             src={course.thumbnail}
                             alt={course.title}
                             width={60}
                             height={40}
-                            style={{ borderRadius: '0.375rem', objectFit: 'cover', flexShrink: 0 }}
                           />
-                          <div style={{ flex: 1, minWidth: 0 }}>
-                            <div style={{ fontSize: '0.875rem', fontWeight: 600, color: '#0f172a', marginBottom: '0.25rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                              {course.title}
-                            </div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{pct}% complete</div>
+                          <div className="recent-course-item__body">
+                            <div className="recent-course-item__title">{course.title}</div>
+                            <div className="recent-course-item__pct">{pct}% complete</div>
                           </div>
                         </Link>
                       )
