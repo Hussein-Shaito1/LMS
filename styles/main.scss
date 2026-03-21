@@ -14,6 +14,7 @@
 @import "components/badge";
 @import "components/modal";
 @import "components/questions";
+@import "components/exam";
 
 // Layouts
 @import "layouts/header";
@@ -540,6 +541,11 @@
 // Hide on small screens
 .max-md-hidden {
   @include max-md { display: none !important; }
+}
+
+.max-lg-only {
+  display: none;
+  @include max-lg { display: block; }
 }
 
 // Course detail — hero banner grid (text + thumbnail)

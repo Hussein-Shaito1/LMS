@@ -12,8 +12,9 @@ import PageTransition from '@/components/ui/PageTransition'
 import ProgressBar from '@/components/ui/ProgressBar'
 import StarRating from '@/components/ui/StarRating'
 import {
-  BookOpen, CheckCircle, Clock, Heart, Play, Users,
+  BookOpen, CheckCircle, Clock, FileQuestion, Heart, Play, Users,
 } from 'lucide-react'
+import { getExamsByCourseId } from '@/lib/exams'
 
 export default function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
@@ -27,6 +28,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   const { showToast } = useToast()
 
   const enrolled = isEnrolled(course.id)
+  const courseExams = getExamsByCourseId(course.id)
   const favorite = isFavorite(course.id)
   const completedLessons = getCompletedLessons(course.id)
   const progressPct = getProgressPercent(course.id, completedLessons)
@@ -180,6 +182,31 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 <span key={tag} className="badge badge--gray">{tag}</span>
               ))}
             </div>
+
+            {/* Linked Exams */}
+            {courseExams.length > 0 && (
+              <div className="card course-exams">
+                <h2 className="course-exams__title">
+                  <FileQuestion size={20} /> Course Exams
+                </h2>
+                {courseExams.map((exam) => (
+                  <Link key={exam.id} href={`/exam/${exam.id}`} className="exam-card">
+                    <div className="exam-card__icon">
+                      <FileQuestion size={20} />
+                    </div>
+                    <div className="exam-card__info">
+                      <div className="exam-card__title">{exam.title}</div>
+                      <div className="exam-card__meta">
+                        <span>{exam.questions.length} questions</span>
+                        <span>{exam.duration} min</span>
+                        <span>Pass at {exam.passingScore}%</span>
+                      </div>
+                    </div>
+                    <span className="badge badge--primary">Take Exam →</span>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}

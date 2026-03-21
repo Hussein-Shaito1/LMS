@@ -1,12 +1,13 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { Answers, Progress, UserAnswer } from '@/types'
+import type { Answers, ExamResult, Progress, UserAnswer } from '@/types'
 
 interface LMSState {
   enrolledCourses: string[]
   favorites: string[]
   progress: Progress
   answers: Answers
+  examResults: Record<string, ExamResult>
 
   enroll: (courseId: string) => void
   unenroll: (courseId: string) => void
@@ -21,6 +22,9 @@ interface LMSState {
   getAnswer: (courseId: string, lessonId: string, questionId: string) => UserAnswer | undefined
   getLessonAnswers: (courseId: string, lessonId: string) => Record<string, UserAnswer>
 
+  saveExamResult: (result: ExamResult) => void
+  getExamResult: (examId: string) => ExamResult | undefined
+
   resetAll: () => void
 }
 
@@ -29,6 +33,7 @@ const empty = {
   favorites: [] as string[],
   progress: {} as Progress,
   answers: {} as Answers,
+  examResults: {} as Record<string, ExamResult>,
 }
 
 export const useLMSStore = create<LMSState>()(
@@ -102,6 +107,14 @@ export const useLMSStore = create<LMSState>()(
 
       getLessonAnswers: (courseId, lessonId) =>
         get().answers[courseId]?.[lessonId] ?? {},
+
+      saveExamResult: (result) => {
+        set((state) => ({
+          examResults: { ...state.examResults, [result.examId]: result },
+        }))
+      },
+
+      getExamResult: (examId) => get().examResults[examId],
 
       resetAll: () => set(empty),
     }),

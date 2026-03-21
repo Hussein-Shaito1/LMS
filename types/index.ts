@@ -92,3 +92,35 @@ export interface Toast {
 export interface Progress {
   [courseId: string]: string[]
 }
+
+// ── Exam types ────────────────────────────────────────────────────────────────
+
+export interface Exam {
+  id: string
+  title: string
+  description: string
+  instructions: string
+  duration: number       // minutes
+  courseId?: string      // optional course link
+  passingScore: number   // percentage (0-100)
+  questions: Question[]
+}
+
+export interface ExamAnswer {
+  questionId: string
+  answer: string
+  isCorrect: boolean
+}
+
+export interface ExamResult {
+  examId: string
+  score: number          // number of correct answers
+  total: number
+  percentage: number
+  passed: boolean
+  answers: ExamAnswer[]
+  timeSpent: number      // seconds actually used
+  durationSeconds: number // total allowed time
+  autoSubmitted: boolean
+  completedAt: string
+}

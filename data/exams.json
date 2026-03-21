@@ -1,0 +1,515 @@
+[
+  {
+    "id": "exam-1",
+    "title": "React & Next.js Certification Exam",
+    "description": "Validate your mastery of React 19 and Next.js 15. This exam covers hooks, component patterns, routing, server components, and modern best practices.",
+    "instructions": "Read each question carefully. You have 30 minutes to complete all 10 questions. Your answers are saved automatically as you go. Click 'Submit Exam' when you are ready or the timer will submit automatically.",
+    "duration": 30,
+    "courseId": "course-1",
+    "passingScore": 70,
+    "questions": [
+      {
+        "id": "eq-1-1",
+        "type": "multiple-choice",
+        "question": "What is JSX in React?",
+        "options": [
+          { "id": "a", "text": "A JavaScript runtime environment" },
+          { "id": "b", "text": "A syntax extension that lets you write HTML-like markup inside JavaScript" },
+          { "id": "c", "text": "A CSS-in-JS library" },
+          { "id": "d", "text": "A state management solution" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "JSX is a syntax extension for JavaScript that allows you to write HTML-like markup directly in your JavaScript code. Babel transforms it to React.createElement() calls."
+      },
+      {
+        "id": "eq-1-2",
+        "type": "multiple-choice",
+        "question": "Which React hook is used to perform side effects in a function component?",
+        "options": [
+          { "id": "a", "text": "useState" },
+          { "id": "b", "text": "useRef" },
+          { "id": "c", "text": "useEffect" },
+          { "id": "d", "text": "useContext" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "useEffect is the hook for performing side effects such as data fetching, subscriptions, or manually changing the DOM."
+      },
+      {
+        "id": "eq-1-3",
+        "type": "multiselect",
+        "question": "Which of the following are built-in React hooks? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "useState" },
+          { "id": "b", "text": "useAnimation" },
+          { "id": "c", "text": "useCallback" },
+          { "id": "d", "text": "useMemo" },
+          { "id": "e", "text": "useStore" }
+        ],
+        "correctAnswer": "a,c,d",
+        "explanation": "useState, useCallback, and useMemo are all built-in React hooks. useAnimation and useStore are not native React hooks."
+      },
+      {
+        "id": "eq-1-4",
+        "type": "input-text",
+        "question": "What is the name of the Next.js folder that contains page components using the App Router? (exact folder name)",
+        "correctAnswer": "app",
+        "explanation": "The App Router in Next.js 13+ uses a folder named 'app' at the root of your project to define routes via nested directories and page.tsx files."
+      },
+      {
+        "id": "eq-1-5",
+        "type": "dropdown",
+        "question": "What does the empty dependency array [] in useEffect mean?",
+        "options": [
+          { "id": "a", "text": "The effect runs on every render" },
+          { "id": "b", "text": "The effect runs only once after initial render" },
+          { "id": "c", "text": "The effect never runs" },
+          { "id": "d", "text": "The effect runs only when the component unmounts" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "An empty dependency array causes useEffect to run only once after the component mounts, similar to componentDidMount in class components."
+      },
+      {
+        "id": "eq-1-6",
+        "type": "sorting",
+        "question": "Order the steps of how React renders a component to the screen:",
+        "options": [
+          { "id": "s1", "text": "React calls the component function" },
+          { "id": "s2", "text": "Trigger: state change or initial mount" },
+          { "id": "s3", "text": "React updates the DOM (commit phase)" },
+          { "id": "s4", "text": "React calculates the virtual DOM diff (reconciliation)" }
+        ],
+        "correctAnswer": "s2,s1,s4,s3",
+        "explanation": "React first triggers a render (via state change or mount), calls the component function, diffs the virtual DOM, then commits changes to the real DOM."
+      },
+      {
+        "id": "eq-1-7",
+        "type": "multiple-choice",
+        "question": "What is 'prop drilling' in React?",
+        "options": [
+          { "id": "a", "text": "Passing props directly to the component that needs them" },
+          { "id": "b", "text": "Passing props through multiple intermediate components that don't use them" },
+          { "id": "c", "text": "Destructuring props in a component" },
+          { "id": "d", "text": "Using default props in a component" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "Prop drilling occurs when you pass data through several layers of components that don't need the data themselves, just to reach a deeply nested component."
+      },
+      {
+        "id": "eq-1-8",
+        "type": "multiple-choice",
+        "question": "In Next.js App Router, which file makes a route segment publicly accessible as a page?",
+        "options": [
+          { "id": "a", "text": "index.tsx" },
+          { "id": "b", "text": "route.tsx" },
+          { "id": "c", "text": "page.tsx" },
+          { "id": "d", "text": "layout.tsx" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "In Next.js App Router, a page.tsx file within a directory makes that route publicly accessible. layout.tsx wraps pages, and route.ts defines API endpoints."
+      },
+      {
+        "id": "eq-1-9",
+        "type": "multiselect",
+        "question": "Which of these are valid ways to manage state in a React application? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "useState hook" },
+          { "id": "b", "text": "useReducer hook" },
+          { "id": "c", "text": "Context API" },
+          { "id": "d", "text": "useDOM hook" },
+          { "id": "e", "text": "External stores like Zustand" }
+        ],
+        "correctAnswer": "a,b,c,e",
+        "explanation": "useState, useReducer, Context API, and external libraries like Zustand are all valid state management approaches. useDOM is not a real React hook."
+      },
+      {
+        "id": "eq-1-10",
+        "type": "multiple-choice",
+        "question": "What does the useMemo hook do?",
+        "options": [
+          { "id": "a", "text": "Memoizes a callback function" },
+          { "id": "b", "text": "Memoizes the result of a computation to avoid re-running it on every render" },
+          { "id": "c", "text": "Caches API responses" },
+          { "id": "d", "text": "Stores a mutable value that persists across renders" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "useMemo memoizes the result of an expensive calculation. It only recomputes when its dependencies change, improving performance."
+      }
+    ]
+  },
+  {
+    "id": "exam-2",
+    "title": "JavaScript Essentials Assessment",
+    "description": "Test your core JavaScript knowledge covering closures, async/await, prototypes, and modern ES6+ features. This exam is suitable for mid-level developers.",
+    "instructions": "You have 20 minutes to answer 8 questions. Some questions have multiple correct answers — select all that apply. Make sure to submit before time runs out.",
+    "duration": 20,
+    "passingScore": 70,
+    "questions": [
+      {
+        "id": "eq-2-1",
+        "type": "multiple-choice",
+        "question": "What does a closure in JavaScript refer to?",
+        "options": [
+          { "id": "a", "text": "A function that is immediately invoked" },
+          { "id": "b", "text": "A function that has access to its outer scope even after the outer function has returned" },
+          { "id": "c", "text": "A method of the Array prototype" },
+          { "id": "d", "text": "A way to close a browser tab programmatically" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "A closure is a function that retains access to variables from its outer (enclosing) scope even after that outer function has finished executing."
+      },
+      {
+        "id": "eq-2-2",
+        "type": "multiselect",
+        "question": "Which of the following are truthy values in JavaScript? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "[] (empty array)" },
+          { "id": "b", "text": "0" },
+          { "id": "c", "text": "{} (empty object)" },
+          { "id": "d", "text": "\"\" (empty string)" },
+          { "id": "e", "text": "\"false\" (string)" }
+        ],
+        "correctAnswer": "a,c,e",
+        "explanation": "Empty arrays [], empty objects {}, and the string 'false' are all truthy in JavaScript. 0 and empty strings are falsy."
+      },
+      {
+        "id": "eq-2-3",
+        "type": "dropdown",
+        "question": "What is the output of: typeof null",
+        "options": [
+          { "id": "a", "text": "\"null\"" },
+          { "id": "b", "text": "\"undefined\"" },
+          { "id": "c", "text": "\"object\"" },
+          { "id": "d", "text": "\"boolean\"" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "typeof null returns 'object' — this is a well-known JavaScript bug that exists for legacy compatibility reasons since the first version of JavaScript."
+      },
+      {
+        "id": "eq-2-4",
+        "type": "input-text",
+        "question": "What keyword is used to declare a block-scoped variable that cannot be reassigned?",
+        "correctAnswer": "const",
+        "explanation": "const declares a block-scoped variable that cannot be reassigned after its initial assignment. Note: objects and arrays declared with const can still be mutated."
+      },
+      {
+        "id": "eq-2-5",
+        "type": "multiple-choice",
+        "question": "Which method returns a new array with the results of calling a function on every element?",
+        "options": [
+          { "id": "a", "text": "forEach()" },
+          { "id": "b", "text": "filter()" },
+          { "id": "c", "text": "map()" },
+          { "id": "d", "text": "reduce()" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "Array.map() creates a new array by calling the provided function on each element and collecting the return values."
+      },
+      {
+        "id": "eq-2-6",
+        "type": "sorting",
+        "question": "Order these JavaScript concepts from most fundamental to most advanced:",
+        "options": [
+          { "id": "p1", "text": "Variables and data types" },
+          { "id": "p2", "text": "Async/Await and Promises" },
+          { "id": "p3", "text": "Functions and scope" },
+          { "id": "p4", "text": "Closures and higher-order functions" }
+        ],
+        "correctAnswer": "p1,p3,p4,p2",
+        "explanation": "Variables are the foundation, then functions and scope, then closures (which build on functions), and finally async patterns which are the most advanced concept."
+      },
+      {
+        "id": "eq-2-7",
+        "type": "multiple-choice",
+        "question": "What does the spread operator (...) do in JavaScript?",
+        "options": [
+          { "id": "a", "text": "Multiplies array elements by a given number" },
+          { "id": "b", "text": "Expands an iterable (array/object) into individual elements" },
+          { "id": "c", "text": "Creates a deep copy of a nested object" },
+          { "id": "d", "text": "Declares a rest parameter in a function" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "The spread operator (...) expands an iterable such as an array or object into individual elements. It can be used to copy arrays, merge objects, and pass arguments."
+      },
+      {
+        "id": "eq-2-8",
+        "type": "multiselect",
+        "question": "Which of the following correctly describe Promises in JavaScript? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "A Promise represents an eventually completed (or failed) asynchronous operation" },
+          { "id": "b", "text": "Promises can only be in a 'pending' state" },
+          { "id": "c", "text": "Promises have .then() and .catch() methods" },
+          { "id": "d", "text": "async/await is syntactic sugar over Promises" }
+        ],
+        "correctAnswer": "a,c,d",
+        "explanation": "Promises represent async operations, have .then()/.catch() chaining methods, and async/await is syntactic sugar built on top of Promises. Promises can be pending, fulfilled, or rejected."
+      }
+    ]
+  },
+  {
+    "id": "exam-3",
+    "title": "CSS & Frontend Styling Exam",
+    "description": "Assess your knowledge of modern CSS including flexbox, grid, animations, specificity, and CSS custom properties. Includes questions on SCSS fundamentals.",
+    "instructions": "8 questions covering CSS fundamentals and advanced concepts. You have 25 minutes. Pay close attention to specificity and layout questions.",
+    "duration": 25,
+    "passingScore": 65,
+    "questions": [
+      {
+        "id": "eq-3-1",
+        "type": "multiple-choice",
+        "question": "Which CSS property is used to create a flexible box layout?",
+        "options": [
+          { "id": "a", "text": "display: block" },
+          { "id": "b", "text": "display: flex" },
+          { "id": "c", "text": "display: inline" },
+          { "id": "d", "text": "display: table" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "display: flex activates the Flexbox layout model on a container, making its direct children flex items that can be arranged flexibly."
+      },
+      {
+        "id": "eq-3-2",
+        "type": "multiselect",
+        "question": "Which CSS selectors have the highest specificity? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "Inline styles (style=\"...\")" },
+          { "id": "b", "text": "ID selectors (#id)" },
+          { "id": "c", "text": "Class selectors (.class)" },
+          { "id": "d", "text": "!important declarations" },
+          { "id": "e", "text": "Element selectors (p, div)" }
+        ],
+        "correctAnswer": "a,d",
+        "explanation": "Inline styles and !important declarations override normal specificity rules. Among regular rules, IDs > classes > elements."
+      },
+      {
+        "id": "eq-3-3",
+        "type": "sorting",
+        "question": "Order CSS specificity from lowest to highest:",
+        "options": [
+          { "id": "c1", "text": "Element selector (e.g. p)" },
+          { "id": "c2", "text": "ID selector (#header)" },
+          { "id": "c3", "text": "Inline style" },
+          { "id": "c4", "text": "Class selector (.container)" }
+        ],
+        "correctAnswer": "c1,c4,c2,c3",
+        "explanation": "Specificity from lowest to highest: element (0,0,1), class (0,1,0), ID (1,0,0), inline styles override all."
+      },
+      {
+        "id": "eq-3-4",
+        "type": "dropdown",
+        "question": "Which CSS Grid property defines the columns of the grid?",
+        "options": [
+          { "id": "a", "text": "grid-template-rows" },
+          { "id": "b", "text": "grid-auto-flow" },
+          { "id": "c", "text": "grid-template-columns" },
+          { "id": "d", "text": "column-gap" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "grid-template-columns defines the number and size of columns in a CSS Grid layout. For example: grid-template-columns: 1fr 2fr 1fr creates three columns."
+      },
+      {
+        "id": "eq-3-5",
+        "type": "multiple-choice",
+        "question": "What does the CSS 'position: sticky' value do?",
+        "options": [
+          { "id": "a", "text": "Removes the element from the normal document flow" },
+          { "id": "b", "text": "Positions the element relative to its nearest positioned ancestor" },
+          { "id": "c", "text": "Keeps the element in flow but sticks it to a position when scrolling" },
+          { "id": "d", "text": "Makes the element fixed relative to the viewport" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "position: sticky is a hybrid between relative and fixed. The element scrolls normally until it reaches a threshold, then sticks in place within its scrolling container."
+      },
+      {
+        "id": "eq-3-6",
+        "type": "input-text",
+        "question": "In SCSS, what symbol is used to nest a parent selector reference? (the character used before a modifier like &:hover)",
+        "correctAnswer": "&",
+        "explanation": "In SCSS, the & character references the parent selector. For example: .btn { &:hover { ... } } compiles to .btn:hover { ... }"
+      },
+      {
+        "id": "eq-3-7",
+        "type": "multiselect",
+        "question": "Which of the following are valid CSS custom property (variable) declarations? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "--primary-color: #6366f1;" },
+          { "id": "b", "text": "$primary: #6366f1;" },
+          { "id": "c", "text": "--font-size-base: 1rem;" },
+          { "id": "d", "text": "var primary = #6366f1;" }
+        ],
+        "correctAnswer": "a,c",
+        "explanation": "CSS custom properties use -- prefix (e.g. --primary-color). $variable is SCSS/Sass syntax. var primary is not valid CSS."
+      },
+      {
+        "id": "eq-3-8",
+        "type": "multiple-choice",
+        "question": "Which flexbox property controls how flex items wrap to the next line?",
+        "options": [
+          { "id": "a", "text": "flex-direction" },
+          { "id": "b", "text": "justify-content" },
+          { "id": "c", "text": "flex-wrap" },
+          { "id": "d", "text": "align-items" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "flex-wrap controls whether flex items wrap onto multiple lines. Values: nowrap (default), wrap, and wrap-reverse."
+      }
+    ]
+  },
+  {
+    "id": "exam-4",
+    "title": "Full-Stack Web Development Assessment",
+    "description": "A comprehensive assessment for senior developers. Covers REST APIs, databases, authentication, performance, and deployment concepts. Requires broad knowledge across the stack.",
+    "instructions": "This is an advanced exam with 12 questions and a 40-minute time limit. A passing score of 75% is required. Read each question carefully — some have nuanced answers.",
+    "duration": 40,
+    "passingScore": 75,
+    "questions": [
+      {
+        "id": "eq-4-1",
+        "type": "multiple-choice",
+        "question": "What is the correct HTTP status code for a successful resource creation?",
+        "options": [
+          { "id": "a", "text": "200 OK" },
+          { "id": "b", "text": "201 Created" },
+          { "id": "c", "text": "204 No Content" },
+          { "id": "d", "text": "202 Accepted" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "201 Created is the correct status code when a resource has been successfully created, typically in response to a POST request."
+      },
+      {
+        "id": "eq-4-2",
+        "type": "multiselect",
+        "question": "Which HTTP methods are considered 'safe' (do not modify server state)? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "GET" },
+          { "id": "b", "text": "POST" },
+          { "id": "c", "text": "HEAD" },
+          { "id": "d", "text": "DELETE" },
+          { "id": "e", "text": "OPTIONS" }
+        ],
+        "correctAnswer": "a,c,e",
+        "explanation": "GET, HEAD, and OPTIONS are safe methods — they should not modify server state. POST, PUT, PATCH, and DELETE are not safe as they modify state."
+      },
+      {
+        "id": "eq-4-3",
+        "type": "dropdown",
+        "question": "What does JWT stand for?",
+        "options": [
+          { "id": "a", "text": "JavaScript Web Toolkit" },
+          { "id": "b", "text": "JSON Web Token" },
+          { "id": "c", "text": "Java Web Transaction" },
+          { "id": "d", "text": "JSON Wrapper Type" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "JWT stands for JSON Web Token. It is an open standard for securely transmitting information between parties as a compact, URL-safe JSON object."
+      },
+      {
+        "id": "eq-4-4",
+        "type": "sorting",
+        "question": "Order these database operations in a typical user authentication flow:",
+        "options": [
+          { "id": "f1", "text": "Hash the password using bcrypt" },
+          { "id": "f2", "text": "Receive login credentials from user" },
+          { "id": "f3", "text": "Issue JWT or session token" },
+          { "id": "f4", "text": "Query database for matching email" },
+          { "id": "f5", "text": "Compare hashed password" }
+        ],
+        "correctAnswer": "f2,f4,f5,f1,f3",
+        "explanation": "In auth flow: receive creds → query DB for user → compare hashed password → if valid, issue token. Hashing is done when storing initially, not on login comparison."
+      },
+      {
+        "id": "eq-4-5",
+        "type": "multiple-choice",
+        "question": "What is the main difference between SQL and NoSQL databases?",
+        "options": [
+          { "id": "a", "text": "SQL is faster than NoSQL for all operations" },
+          { "id": "b", "text": "SQL uses structured tables with schemas; NoSQL uses flexible document/key-value/graph models" },
+          { "id": "c", "text": "NoSQL databases cannot scale horizontally" },
+          { "id": "d", "text": "SQL databases don't support relationships between data" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "SQL (relational) databases use structured tables with predefined schemas and support ACID transactions. NoSQL databases use flexible data models (documents, key-value, graphs) suited for unstructured or rapidly changing data."
+      },
+      {
+        "id": "eq-4-6",
+        "type": "input-text",
+        "question": "What HTTP header is used to specify the content type of the request body? (e.g. Content-Type)",
+        "correctAnswer": "Content-Type",
+        "explanation": "The Content-Type header tells the server what type of data is being sent in the request body, such as application/json or multipart/form-data."
+      },
+      {
+        "id": "eq-4-7",
+        "type": "multiselect",
+        "question": "Which of these are common web performance optimization techniques? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "Code splitting and lazy loading" },
+          { "id": "b", "text": "Using synchronous loading for all scripts" },
+          { "id": "c", "text": "Caching with CDN" },
+          { "id": "d", "text": "Image optimization and modern formats (WebP)" },
+          { "id": "e", "text": "Minification of CSS and JavaScript" }
+        ],
+        "correctAnswer": "a,c,d,e",
+        "explanation": "Code splitting, CDN caching, image optimization, and minification all improve performance. Synchronous script loading blocks rendering and is a performance anti-pattern."
+      },
+      {
+        "id": "eq-4-8",
+        "type": "multiple-choice",
+        "question": "What is CORS and why is it important?",
+        "options": [
+          { "id": "a", "text": "A method for compressing HTTP responses" },
+          { "id": "b", "text": "A browser security mechanism that restricts cross-origin HTTP requests" },
+          { "id": "c", "text": "A database query optimization technique" },
+          { "id": "d", "text": "A CSS rendering optimization" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "CORS (Cross-Origin Resource Sharing) is a browser security feature that restricts how resources on one domain can be requested from another domain, preventing unauthorized cross-origin requests."
+      },
+      {
+        "id": "eq-4-9",
+        "type": "dropdown",
+        "question": "What is the purpose of database indexing?",
+        "options": [
+          { "id": "a", "text": "To encrypt database records" },
+          { "id": "b", "text": "To create backups of database tables" },
+          { "id": "c", "text": "To speed up read queries by creating lookup structures" },
+          { "id": "d", "text": "To enforce referential integrity" }
+        ],
+        "correctAnswer": "c",
+        "explanation": "Database indexes are data structures that improve query speed by providing fast lookups. They trade write performance and storage space for faster reads."
+      },
+      {
+        "id": "eq-4-10",
+        "type": "multiselect",
+        "question": "Which of the following are principles of RESTful API design? (Select all that apply)",
+        "options": [
+          { "id": "a", "text": "Statelessness — each request contains all information needed" },
+          { "id": "b", "text": "Client-server architecture" },
+          { "id": "c", "text": "Requiring WebSockets for all communication" },
+          { "id": "d", "text": "Uniform interface (consistent resource naming)" },
+          { "id": "e", "text": "Cacheability of responses" }
+        ],
+        "correctAnswer": "a,b,d,e",
+        "explanation": "REST principles include statelessness, client-server separation, uniform interface, and cacheability. REST does not require WebSockets — it is HTTP-based."
+      },
+      {
+        "id": "eq-4-11",
+        "type": "multiple-choice",
+        "question": "What is the purpose of environment variables in a web application?",
+        "options": [
+          { "id": "a", "text": "To style the application differently on each machine" },
+          { "id": "b", "text": "To store configuration values like API keys outside of source code" },
+          { "id": "c", "text": "To define CSS custom properties at build time" },
+          { "id": "d", "text": "To set the JavaScript runtime version" }
+        ],
+        "correctAnswer": "b",
+        "explanation": "Environment variables store configuration values (API keys, database URLs, secrets) outside of source code, enabling different configurations per environment (dev/staging/prod) without exposing secrets."
+      },
+      {
+        "id": "eq-4-12",
+        "type": "input-text",
+        "question": "What Git command creates a new branch and immediately switches to it? (format: git ...)",
+        "correctAnswer": "git checkout -b",
+        "explanation": "git checkout -b <branch-name> creates a new branch and switches to it in one step. The modern equivalent is git switch -c <branch-name>."
+      }
+    ]
+  }
+]

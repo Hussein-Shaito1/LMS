@@ -1,0 +1,752 @@
+// ============================================================
+// EXAM INTRO PAGE
+// ============================================================
+
+.exam-intro {
+  &__hero {
+    background: linear-gradient(135deg, $gray-800 0%, $gray-900 100%);
+    color: $white;
+    padding: $space-16 0;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: $radius-full;
+    padding: $space-1 $space-4;
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+    color: $primary-light;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-5;
+  }
+
+  &__title {
+    color: $white;
+    font-size: $text-4xl;
+    font-weight: $font-extrabold;
+    line-height: $leading-tight;
+    margin-bottom: $space-4;
+
+    @include max-md { font-size: $text-3xl; }
+  }
+
+  &__desc {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: $text-lg;
+    max-width: 640px;
+    line-height: $leading-relaxed;
+  }
+}
+
+.exam-meta {
+  display: flex;
+  gap: $space-6;
+  flex-wrap: wrap;
+  margin-top: $space-8;
+
+  @include max-md { gap: $space-4; }
+}
+
+.exam-meta-item {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: rgba(255, 255, 255, 0.7);
+
+  svg { color: $primary-light; }
+
+  strong {
+    color: $white;
+    font-weight: $font-semibold;
+  }
+}
+
+.exam-instructions {
+  background: $primary-lighter;
+  border-left: 4px solid $primary;
+  border-radius: 0 $radius $radius 0;
+  padding: $space-5 $space-6;
+  margin-bottom: $space-6;
+
+  &__title {
+    font-weight: $font-semibold;
+    color: $primary-dark;
+    margin-bottom: $space-2;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  p {
+    font-size: $text-sm;
+    color: $primary-dark;
+    line-height: $leading-relaxed;
+  }
+}
+
+.exam-existing-result {
+  background: $white;
+  border: 1.5px solid $border;
+  border-radius: $radius-lg;
+  padding: $space-5 $space-6;
+  margin-bottom: $space-6;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    margin-bottom: $space-4;
+
+    h4 { margin: 0; font-size: $text-base; }
+  }
+
+  &__stats {
+    display: flex;
+    gap: $space-6;
+    flex-wrap: wrap;
+  }
+
+  &__stat {
+    font-size: $text-sm;
+    color: $text-secondary;
+
+    strong {
+      display: block;
+      font-size: $text-lg;
+      font-weight: $font-bold;
+      color: $text-primary;
+    }
+  }
+}
+
+.exam-start-actions {
+  display: flex;
+  gap: $space-3;
+  flex-wrap: wrap;
+}
+
+// ============================================================
+// EXAM ACTIVE PAGE (topbar + layout)
+// ============================================================
+
+.exam-active-page {
+  background: $gray-50;
+  min-height: calc(100vh - #{$header-height});
+}
+
+.exam-topbar {
+  background: $white;
+  border-bottom: 1px solid $border;
+  padding: $space-3 0;
+  position: sticky;
+  top: $header-height;
+  z-index: 50;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    color: $text-secondary;
+    font-size: $text-sm;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: color $transition;
+
+    &:hover { color: $primary; }
+  }
+
+  &__title {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: $text-primary;
+    flex: 1;
+    @include truncate;
+
+    @include max-md { display: none; }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    flex-shrink: 0;
+  }
+}
+
+.exam-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  background: $gray-100;
+  border: 1.5px solid $border;
+  border-radius: $radius-full;
+  padding: $space-2 $space-4;
+  font-size: $text-sm;
+  font-weight: $font-bold;
+  color: $text-primary;
+  font-variant-numeric: tabular-nums;
+  transition: $transition-all;
+
+  &--warning {
+    background: #fef9c3;
+    border-color: #fbbf24;
+    color: #92400e;
+  }
+
+  &--critical {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+    animation: timer-pulse 1s ease-in-out infinite;
+  }
+}
+
+@keyframes timer-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.exam-progress-label {
+  font-size: 0.8125rem;
+  color: $text-secondary;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+// ============================================================
+// EXAM LAYOUT (questions + sidebar)
+// ============================================================
+
+.exam-body {
+  padding-top: $space-8;
+  padding-bottom: $space-16;
+}
+
+.exam-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: $space-8;
+  align-items: start;
+
+  @include max-lg { grid-template-columns: 1fr; }
+}
+
+// ============================================================
+// EXAM QUESTION CARD
+// ============================================================
+
+.exam-question {
+  background: $white;
+  border: 1.5px solid $border;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  margin-bottom: $space-4;
+  transition: border-color $transition;
+  scroll-margin-top: 100px;
+
+  &--answered {
+    border-color: $primary-light;
+  }
+
+  &--correct {
+    border-color: $success;
+    background: #f0fdf4;
+  }
+
+  &--incorrect {
+    border-color: $error;
+    background: #fef2f2;
+  }
+
+  &__header {
+    display: flex;
+    gap: $space-3;
+    margin-bottom: $space-5;
+    align-items: flex-start;
+  }
+
+  &__num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: $primary-lighter;
+    color: $primary;
+    @include flex-center;
+    font-size: $text-xs;
+    font-weight: $font-bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__text {
+    font-size: $text-base;
+    font-weight: $font-medium;
+    color: $text-primary;
+    line-height: $leading-relaxed;
+    flex: 1;
+  }
+
+  &__status {
+    flex-shrink: 0;
+    margin-top: 2px;
+
+    &--correct { color: $success; }
+    &--incorrect { color: $error; }
+  }
+}
+
+.exam-answer-hint {
+  font-size: $text-xs;
+  color: $text-muted;
+  margin-top: $space-3;
+  font-style: italic;
+}
+
+// ============================================================
+// EXAM SIDEBAR (navigation + submit)
+// ============================================================
+
+.exam-sidebar {
+  position: sticky;
+  top: calc(#{$header-height} + 70px);
+
+  @include max-lg {
+    position: static;
+    order: -1;
+  }
+}
+
+.exam-nav-card {
+  background: $white;
+  border: 1.5px solid $border;
+  border-radius: $radius-lg;
+  padding: $space-5;
+  margin-bottom: $space-4;
+
+  &__title {
+    font-size: 0.8125rem;
+    font-weight: $font-semibold;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: $space-4;
+  }
+}
+
+.exam-nav-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin-bottom: $space-4;
+}
+
+.exam-nav-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: $radius;
+  border: 1.5px solid $border;
+  background: $white;
+  font-size: $text-xs;
+  font-weight: $font-semibold;
+  color: $text-muted;
+  cursor: pointer;
+  transition: $transition-all;
+  @include flex-center;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+    background: $primary-lighter;
+  }
+
+  &--answered {
+    background: $primary-lighter;
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &--current {
+    background: $primary;
+    border-color: $primary;
+    color: $white;
+    transform: scale(1.1);
+  }
+}
+
+.exam-answered-count {
+  font-size: $text-sm;
+  color: $text-secondary;
+  margin-bottom: $space-4;
+
+  strong { color: $text-primary; }
+}
+
+// ============================================================
+// EXAM RESULTS PAGE
+// ============================================================
+
+.exam-result-page {
+  background: $gray-50;
+  min-height: calc(100vh - #{$header-height});
+}
+
+.exam-result-hero {
+  padding: $space-16 0;
+  text-align: center;
+  color: $white;
+
+  &--pass {
+    background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+  }
+
+  &--fail {
+    background: linear-gradient(135deg, $gray-800 0%, $gray-900 100%);
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: $radius-full;
+    padding: $space-1 $space-4;
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    margin-bottom: $space-6;
+    letter-spacing: 0.04em;
+  }
+
+  &__title {
+    color: $white;
+    font-size: $text-4xl;
+    font-weight: $font-extrabold;
+    margin-bottom: $space-2;
+
+    @include max-md { font-size: $text-3xl; }
+  }
+
+  &__subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: $text-lg;
+  }
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $space-8 0;
+}
+
+.score-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: $space-4;
+
+  svg {
+    transform: rotate(-90deg);
+  }
+
+  &__bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 8;
+  }
+
+  &__fill {
+    fill: none;
+    stroke: $white;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__percent {
+    position: absolute;
+    inset: 0;
+    @include flex-center;
+    flex-direction: column;
+
+    .percent-value {
+      font-size: 2.25rem;
+      font-weight: $font-extrabold;
+      color: $white;
+      line-height: 1;
+    }
+
+    .percent-label {
+      font-size: $text-xs;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 2px;
+    }
+  }
+}
+
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-4;
+  margin: $space-8 0;
+
+  @include max-md { grid-template-columns: 1fr; gap: $space-3; }
+}
+
+.result-stat-card {
+  background: $white;
+  border: 1.5px solid $border;
+  border-radius: $radius-lg;
+  padding: $space-5;
+  text-align: center;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    @include flex-center;
+    margin: 0 auto $space-3;
+
+    &--success { background: $success-light; color: $success; }
+    &--error   { background: $error-light; color: $error; }
+    &--info    { background: $primary-lighter; color: $primary; }
+    &--warning { background: #fef9c3; color: #92400e; }
+  }
+
+  &__value {
+    font-size: $text-2xl;
+    font-weight: $font-extrabold;
+    color: $text-primary;
+    margin-bottom: $space-1;
+  }
+
+  &__label {
+    font-size: $text-xs;
+    color: $text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+.auto-submit-notice {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  background: #fef9c3;
+  border: 1px solid #fbbf24;
+  border-radius: $radius;
+  padding: $space-3 $space-4;
+  font-size: $text-sm;
+  color: #92400e;
+  margin-bottom: $space-6;
+}
+
+// ============================================================
+// ANSWER REVIEW
+// ============================================================
+
+.exam-review {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-6;
+    gap: $space-4;
+    flex-wrap: wrap;
+
+    h3 { margin: 0; }
+  }
+}
+
+.review-question {
+  background: $white;
+  border: 1.5px solid $border;
+  border-radius: $radius-lg;
+  padding: $space-5 $space-6;
+  margin-bottom: $space-3;
+  transition: $transition-all;
+
+  &--correct {
+    border-color: $success;
+    background: #f0fdf4;
+
+    .review-question__num { background: $success; color: $white; }
+  }
+
+  &--incorrect {
+    border-color: $error;
+    background: #fef2f2;
+
+    .review-question__num { background: $error; color: $white; }
+  }
+
+  &__header {
+    display: flex;
+    gap: $space-3;
+    align-items: flex-start;
+    margin-bottom: $space-4;
+  }
+
+  &__num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: $gray-200;
+    color: $text-secondary;
+    @include flex-center;
+    font-size: $text-xs;
+    font-weight: $font-bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__text {
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    color: $text-primary;
+    line-height: $leading-relaxed;
+    flex: 1;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    &--correct { color: $success; }
+    &--incorrect { color: $error; }
+  }
+
+  &__answers {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    font-size: $text-sm;
+    margin-left: calc(26px + #{$space-3});
+  }
+
+  &__answer-row {
+    display: flex;
+    gap: $space-2;
+    align-items: baseline;
+
+    &-label {
+      font-weight: $font-semibold;
+      color: $text-muted;
+      white-space: nowrap;
+      min-width: 100px;
+      font-size: 0.8125rem;
+    }
+
+    &-value {
+      color: $text-primary;
+
+      &--correct { color: $success; font-weight: $font-semibold; }
+      &--incorrect { color: $error; }
+    }
+  }
+
+  &__explanation {
+    margin-top: $space-3;
+    margin-left: calc(26px + #{$space-3});
+    padding: $space-3 $space-4;
+    background: $gray-50;
+    border-radius: $radius;
+    font-size: 0.8125rem;
+    color: $text-secondary;
+    line-height: $leading-relaxed;
+    border-left: 3px solid $border;
+  }
+}
+
+// ============================================================
+// COURSE PAGE EXAM SECTION
+// ============================================================
+
+.course-exams {
+  margin-top: $space-6;
+
+  &__title {
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    margin-bottom: $space-4;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+}
+
+.exam-card {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-4;
+  border: 1.5px solid $border;
+  border-radius: $radius-lg;
+  background: $white;
+  text-decoration: none;
+  transition: $transition-all;
+  margin-bottom: $space-3;
+
+  &:hover {
+    border-color: $primary-light;
+    background: $primary-lighter;
+    transform: translateX(3px);
+  }
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: $radius;
+    background: $primary-lighter;
+    color: $primary;
+    @include flex-center;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: $text-sm;
+    font-weight: $font-semibold;
+    color: $text-primary;
+    margin-bottom: $space-1;
+    @include truncate;
+  }
+
+  &__meta {
+    font-size: $text-xs;
+    color: $text-secondary;
+    display: flex;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__result {
+    flex-shrink: 0;
+    text-align: right;
+    font-size: $text-xs;
+
+    &-score {
+      font-weight: $font-bold;
+      font-size: $text-sm;
+      &--pass { color: $success; }
+      &--fail { color: $error; }
+    }
+
+    &-label { color: $text-muted; }
+  }
+}
