@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { filterCourses, getAllTags, getAllTeachers, getCategories, getLevels } from '@/lib/courses'
 import type { SortOption } from '@/lib/courses'
 import CourseCard from '@/components/ui/CourseCard'
@@ -109,76 +109,119 @@ export default function CoursesPage() {
         <div className="courses-layout">
 
           {/* Sidebar filters */}
-          {sidebarOpen && (
-            <motion.aside
-              className="courses-layout__sidebar card"
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -16 }}
-              transition={{ duration: 0.2 }}
-            >
-              <FilterGroup label="Level">
-                <div className="filter-group__items">
-                  {levels.map((l) => (
-                    <label key={l} className="filter-check">
-                      <input
-                        type="radio"
-                        name="level"
-                        value={l}
-                        checked={level === l}
-                        onChange={() => setLevel(l)}
-                      />
-                      {l}
-                    </label>
-                  ))}
-                </div>
-              </FilterGroup>
+          <AnimatePresence>
+            {sidebarOpen && (
+              <>
+                {/* Mobile backdrop */}
+                <motion.div
+                  className="filter-overlay__backdrop"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setSidebarOpen(false)}
+                />
 
-              <FilterGroup label="Category">
-                <div className="filter-group__items">
-                  {categories.map((c) => (
-                    <label key={c} className="filter-check">
-                      <input
-                        type="radio"
-                        name="category"
-                        value={c}
-                        checked={category === c}
-                        onChange={() => setCategory(c)}
-                      />
-                      {c}
-                    </label>
-                  ))}
-                </div>
-              </FilterGroup>
-
-              <FilterGroup label="Instructor">
-                <select
-                  className="select"
-                  value={teacherId}
-                  onChange={(e) => setTeacherId(e.target.value)}
+                <motion.aside
+                  className="courses-layout__sidebar card"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 24 }}
+                  transition={{ duration: 0.22, ease: 'easeOut' }}
                 >
-                  <option value="">All Instructors</option>
-                  {allTeachers.map((t) => (
-                    <option key={t.id} value={t.id}>{t.name}</option>
-                  ))}
-                </select>
-              </FilterGroup>
+                  {/* Mobile drag handle */}
+                  <div className="filter-popup-handle" />
 
-              <FilterGroup label="Tags">
-                <div className="filter-group__tags">
-                  {allTags.map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => toggleTag(tag)}
-                      className={`badge ${selectedTags.includes(tag) ? 'badge--primary' : 'badge--gray'}`}
-                    >
-                      {tag}
+                  {/* Mobile header */}
+                  <div className="filter-popup-header">
+                    <span>Filters</span>
+                    <button onClick={() => setSidebarOpen(false)} aria-label="Close filters">
+                      <X size={18} />
                     </button>
-                  ))}
-                </div>
-              </FilterGroup>
-            </motion.aside>
-          )}
+                  </div>
+
+                  <FilterGroup label="Level">
+                    <div className="filter-group__items">
+                      {levels.map((l) => (
+                        <label key={l} className="filter-check">
+                          <input
+                            type="radio"
+                            name="level"
+                            value={l}
+                            checked={level === l}
+                            onChange={() => setLevel(l)}
+                          />
+                          {l}
+                        </label>
+                      ))}
+                    </div>
+                  </FilterGroup>
+
+                  <FilterGroup label="Category">
+                    <div className="filter-group__items">
+                      {categories.map((c) => (
+                        <label key={c} className="filter-check">
+                          <input
+                            type="radio"
+                            name="category"
+                            value={c}
+                            checked={category === c}
+                            onChange={() => setCategory(c)}
+                          />
+                          {c}
+                        </label>
+                      ))}
+                    </div>
+                  </FilterGroup>
+
+                  <FilterGroup label="Instructor">
+                    <select
+                      className="select"
+                      value={teacherId}
+                      onChange={(e) => setTeacherId(e.target.value)}
+                    >
+                      <option value="">All Instructors</option>
+                      {allTeachers.map((t) => (
+                        <option key={t.id} value={t.id}>{t.name}</option>
+                      ))}
+                    </select>
+                  </FilterGroup>
+
+                  <FilterGroup label="Tags">
+                    <div className="filter-group__tags">
+                      {allTags.map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => toggleTag(tag)}
+                          className={`badge ${selectedTags.includes(tag) ? 'badge--primary' : 'badge--gray'}`}
+                        >
+                          {tag}
+                        </button>
+                      ))}
+                    </div>
+                  </FilterGroup>
+
+                  {/* Mobile apply button */}
+                  <div className="filter-popup-footer">
+                    <button
+                      className="btn btn--primary btn--full"
+                      onClick={() => setSidebarOpen(false)}
+                    >
+                      Show {results.length} result{results.length !== 1 ? 's' : ''}
+                    </button>
+                    {hasActiveFilters && (
+                      <button
+                        className="btn btn--ghost btn--full"
+                        onClick={() => { clearAll(); setSidebarOpen(false) }}
+                      >
+                        Clear all filters
+                      </button>
+                    )}
+                  </div>
+                </motion.aside>
+              </>
+            )}
+          </AnimatePresence>
 
           {/* Results */}
           <div className="courses-layout__results">

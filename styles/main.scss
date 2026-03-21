@@ -605,8 +605,17 @@
     top: 90px;
 
     @include max-lg {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
       width: 100%;
-      position: static;
+      z-index: 200;
+      border-radius: 1.25rem 1.25rem 0 0;
+      max-height: 82vh;
+      overflow-y: auto;
+      padding-bottom: 1.5rem;
+      box-shadow: 0 -8px 40px rgba(15, 23, 42, 0.18);
     }
   }
 

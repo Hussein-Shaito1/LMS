@@ -951,6 +951,80 @@
   .btn { margin-top: $space-4; }
 }
 
+// Mobile filter bottom-sheet overlay
+.filter-overlay__backdrop {
+  display: none;
+
+  @include max-lg {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 199;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(3px);
+  }
+}
+
+.filter-popup-handle {
+  display: none;
+
+  @include max-lg {
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: $radius-full;
+    background: $gray-300;
+    margin: 0 auto $space-5;
+  }
+}
+
+.filter-popup-header {
+  display: none;
+
+  @include max-lg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: $space-4;
+    margin-bottom: $space-2;
+    border-bottom: 1px solid $border;
+
+    span {
+      font-weight: $font-semibold;
+      font-size: $text-lg;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $text-secondary;
+      padding: $space-2;
+      border-radius: $radius;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition-all;
+
+      &:hover {
+        background: $gray-100;
+        color: $text-primary;
+      }
+    }
+  }
+}
+
+.filter-popup-footer {
+  display: none;
+
+  @include max-lg {
+    display: block;
+    margin-top: $space-6;
+    padding-top: $space-4;
+    border-top: 1px solid $border;
+  }
+}
+
 .filter-group {
   &__label {
     font-size: $text-xs;
