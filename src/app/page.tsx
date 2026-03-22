@@ -8,20 +8,25 @@ import SearchFilter from '@/components/ui/SearchFilter'
 import PageTransition from '@/components/ui/PageTransition'
 import HeroSwiper from '@/components/ui/HeroSwiper'
 import TeacherCarousel from '@/components/ui/TeacherCarousel'
+import Pagination from '@/components/ui/Pagination'
 import { BookOpen, Users, Award, Star } from 'lucide-react'
+
+const PER_PAGE = 6
 
 export default function HomePage() {
   const allCourses = getAllCourses()
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('All')
   const [level, setLevel] = useState('All')
+  const [page, setPage] = useState(1)
 
-  const filtered = useMemo(
-    () => searchCourses(query, category, level),
-    [query, category, level]
-  )
+  const filtered = useMemo(() => {
+    setPage(1)
+    return searchCourses(query, category, level)
+  }, [query, category, level])
 
-  const featuredCourses = allCourses.slice(0, 3)
+  const totalPages = Math.ceil(filtered.length / PER_PAGE)
+  const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
   const isSearching = query.trim() || category !== 'All' || level !== 'All'
 
   return (
@@ -93,10 +98,11 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="courses-grid stagger-children">
-              {filtered.map((course) => (
+              {paginated.map((course) => (
                 <CourseCard key={course.id} course={course} />
               ))}
             </div>
+            <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
           )}
         </div>
       </section>

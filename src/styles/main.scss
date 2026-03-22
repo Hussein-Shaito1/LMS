@@ -790,6 +790,67 @@
 }
 
 // ============================================
+// PAGINATION
+// ============================================
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-1;
+  margin-top: $space-10;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 $space-2;
+    border: 1.5px solid $border;
+    border-radius: $radius;
+    background: $white;
+    color: $text-secondary;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    cursor: pointer;
+    transition: border-color $transition, background $transition, color $transition;
+
+    &:hover:not(:disabled) {
+      border-color: $primary;
+      color: $primary;
+    }
+
+    &--active {
+      background: $primary;
+      border-color: $primary;
+      color: $white;
+
+      &:hover {
+        background: $primary-dark;
+        border-color: $primary-dark;
+        color: $white;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    color: $text-muted;
+    font-size: $text-sm;
+  }
+}
+
+// ============================================
 // FILTER CHECKBOX
 // ============================================
 
