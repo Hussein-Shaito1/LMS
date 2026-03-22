@@ -257,6 +257,10 @@
     border-bottom: 1px solid $border;
     padding: $space-6 0;
 
+    .section__header {
+      margin-bottom: $space-6;
+    }
+
     .hero__stats {
       margin-top: 0;
       animation: none;

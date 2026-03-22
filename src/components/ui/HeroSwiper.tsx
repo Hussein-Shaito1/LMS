@@ -97,6 +97,10 @@ export default function HeroSwiper() {
 
       <div className="hero-swiper__stats">
         <div className="container">
+          <div className="section__header">
+            <span className="section__header-eyebrow">By The Numbers</span>
+            <h2>Trusted by Learners Worldwide</h2>
+          </div>
           <div className="hero__stats">
             {STATS.map(({ value, label }) => (
               <div key={label} className="hero__stat">
