@@ -1099,13 +1099,19 @@
 }
 
 .filter-group {
+  & + & {
+    margin-top: $space-6;
+    padding-top: $space-6;
+    border-top: 1px solid $border;
+  }
+
   &__label {
     font-size: $text-xs;
     font-weight: $font-bold;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: $text-muted;
-    margin-bottom: $space-3;
+    margin-bottom: $space-4;
   }
 
   &__items {
