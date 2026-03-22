@@ -63,49 +63,53 @@ export default function LoginPage() {
         <form className="form" onSubmit={handleSubmit} noValidate>
           <div className="form__group">
             <label className="form__label" htmlFor="email">Email</label>
-            <div className="input-wrapper">
-              <Mail className="input-wrapper__icon" size={18} />
-              <input
-                id="email"
-                type="email"
-                className={`input input--with-icon ${errors.email ? 'input--error' : ''}`}
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); setErrors({}) }}
-                autoComplete="email"
-              />
+            <div className="form__input-wrap">
+              <div className="input-wrapper">
+                <Mail className="input-wrapper__icon" size={18} />
+                <input
+                  id="email"
+                  type="email"
+                  className={`input input--with-icon${errors.email ? ' input--error' : ''}`}
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setErrors({}) }}
+                  autoComplete="email"
+                />
+              </div>
+              <span className="form__error">{errors.email}</span>
             </div>
-            {errors.email && <span className="form__error">{errors.email}</span>}
           </div>
 
           <div className="form__group">
             <label className="form__label" htmlFor="password">Password</label>
-            <div className="input-wrapper">
-              <Lock className="input-wrapper__icon" size={18} />
-              <input
-                id="password"
-                type={showPw ? 'text' : 'password'}
-                className={`input input--with-icon ${errors.password ? 'input--error' : ''}`}
-                placeholder="Your password"
-                value={password}
-                onChange={(e) => { setPassword(e.target.value); setErrors({}) }}
-                autoComplete="current-password"
-              />
-              <button
-                type="button"
-                className="input-wrapper__action"
-                onClick={() => setShowPw((v) => !v)}
-                aria-label={showPw ? 'Hide password' : 'Show password'}
-              >
-                {showPw ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
+            <div className="form__input-wrap">
+              <div className="input-wrapper">
+                <Lock className="input-wrapper__icon" size={18} />
+                <input
+                  id="password"
+                  type={showPw ? 'text' : 'password'}
+                  className={`input input--with-icon input--with-action${errors.password ? ' input--error' : ''}`}
+                  placeholder="Your password"
+                  value={password}
+                  onChange={(e) => { setPassword(e.target.value); setErrors({}) }}
+                  autoComplete="current-password"
+                />
+                <button
+                  type="button"
+                  className="input-wrapper__action"
+                  onClick={() => setShowPw((v) => !v)}
+                  aria-label={showPw ? 'Hide password' : 'Show password'}
+                >
+                  {showPw ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+              <span className="form__error">{errors.password}</span>
             </div>
-            {errors.password && <span className="form__error">{errors.password}</span>}
           </div>
 
           <button
             type="submit"
-            className={`btn btn--primary btn--full btn--lg ${loading ? 'btn--loading' : ''}`}
+            className={`btn btn--primary btn--full btn--lg${loading ? ' btn--loading' : ''}`}
             disabled={loading}
           >
             {loading ? <><span className="btn__spinner" /> Signing in...</> : 'Sign In'}

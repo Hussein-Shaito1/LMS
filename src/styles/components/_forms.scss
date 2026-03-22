@@ -34,15 +34,20 @@
 
   &__input-wrap {
     position: relative;
-    padding-bottom: 22px;
-
+    .form__error {
+      display: block;
+      min-height: 1.25rem;
+      padding-top: 3px;
+      line-height: 1;
+    }
+  }
+  &__profile {
     .form__error {
       position: absolute;
-      bottom: 0;
+      bottom: -22px;
       left: 0;
     }
   }
-
   &__section {
     padding-top: $space-4;
     border-top: 1px solid $border;
@@ -69,7 +74,9 @@
   font-size: $text-sm;
   color: $text-primary;
   background: $white;
-  transition: border-color $transition, box-shadow $transition;
+  transition:
+    border-color $transition,
+    box-shadow $transition;
   outline: none;
 
   &::placeholder {
@@ -154,7 +161,9 @@ textarea.input {
   font-size: $text-sm;
   color: $text-primary;
   background: $white;
-  transition: border-color $transition, box-shadow $transition;
+  transition:
+    border-color $transition,
+    box-shadow $transition;
   outline: none;
   cursor: pointer;
   appearance: none;
@@ -174,7 +183,12 @@ textarea.input {
   @include flex-center;
   background: linear-gradient(135deg, $primary-lighter 0%, $bg 60%);
   padding: $space-6;
-
+  .form {
+    gap: 0;
+    .btn {
+      margin-top: 20px;
+    }
+  }
   &__card {
     width: 100%;
     max-width: 440px;
