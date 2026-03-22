@@ -97,12 +97,14 @@ export default function HomePage() {
               </button>
             </div>
           ) : (
-            <div className="courses-grid stagger-children">
-              {paginated.map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
-            </div>
-            <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+            <>
+              <div className="courses-grid stagger-children">
+                {paginated.map((course) => (
+                  <CourseCard key={course.id} course={course} />
+                ))}
+              </div>
+              <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+            </>
           )}
         </div>
       </section>
