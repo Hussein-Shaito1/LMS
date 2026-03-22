@@ -14,6 +14,18 @@ interface Props {
 }
 
 export default function QuestionSection({ courseId, lessonId, questions }: Props) {
+  const { getAnswer, markLesson, isLessonCompleted } = useLMS()
+  const { showToast } = useToast()
+
+  function handleAnswerSubmit() {
+    if (isLessonCompleted(courseId, lessonId)) return
+    const allAnswered = questions.every((q) => getAnswer(courseId, lessonId, q.id))
+    if (allAnswered) {
+      markLesson(courseId, lessonId)
+      showToast('All questions answered! Lesson marked as complete!', 'success')
+    }
+  }
+
   return (
     <div className="question-section">
       <h2 className="question-section__title">
@@ -28,6 +40,7 @@ export default function QuestionSection({ courseId, lessonId, questions }: Props
             index={idx + 1}
             courseId={courseId}
             lessonId={lessonId}
+            onAnswerSubmit={handleAnswerSubmit}
           />
         ))}
       </div>
@@ -40,11 +53,13 @@ function QuestionCard({
   index,
   courseId,
   lessonId,
+  onAnswerSubmit,
 }: {
   question: Question
   index: number
   courseId: string
   lessonId: string
+  onAnswerSubmit: () => void
 }) {
   const { submitAnswer, getAnswer } = useLMS()
   const { showToast } = useToast()
@@ -103,6 +118,7 @@ function QuestionCard({
 
     submitAnswer(courseId, lessonId, question.id, answer, correct)
     setSubmitted(true)
+    onAnswerSubmit()
 
     if (correct) {
       showToast('Correct! Well done!', 'success')
