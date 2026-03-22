@@ -15,6 +15,10 @@
     color: $text-primary;
   }
 
+  &__required {
+    color: $error;
+  }
+
   &__hint {
     font-size: $text-xs;
     color: $text-muted;
@@ -26,6 +30,34 @@
     display: flex;
     align-items: center;
     gap: $space-1;
+  }
+
+  &__input-wrap {
+    position: relative;
+    padding-bottom: 22px;
+
+    .form__error {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &__section {
+    padding-top: $space-4;
+    border-top: 1px solid $border;
+
+    &-title {
+      font-size: $text-base;
+      font-weight: $font-semibold;
+      color: $text-primary;
+      margin-bottom: $space-1;
+    }
+
+    &-desc {
+      font-size: $text-sm;
+      color: $text-muted;
+    }
   }
 }
 
@@ -56,13 +88,22 @@
   &--error {
     border-color: $error;
 
+    &:hover {
+      border-color: $error;
+    }
+
     &:focus {
+      border-color: $error;
       box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
     }
   }
 
   &--with-icon {
     padding-left: $space-10;
+  }
+
+  &--with-action {
+    padding-right: $space-10;
   }
 }
 

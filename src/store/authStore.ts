@@ -29,6 +29,7 @@ interface AuthState {
   register: (name: string, email: string, password: string) => Promise<{ success: boolean; error?: string }>
   logout: () => void
   updateProfile: (updates: Partial<Pick<StoredUser, 'name' | 'bio' | 'avatar'>>) => void
+  changePassword: (currentPassword: string, newPassword: string) => Promise<{ success: boolean; error?: string }>
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -44,18 +45,20 @@ export const useAuthStore = create<AuthState>()(
           id: string; name: string; email: string; password: string
           avatar: string; bio: string; joinedAt: string
         }>
-        const seedMatch = seedUsers.find((u) => u.email === email && u.password === password)
 
-        if (seedMatch) {
-          const stored: StoredUser = {
-            id: seedMatch.id,
-            name: seedMatch.name,
-            email: seedMatch.email,
-            avatar: seedMatch.avatar,
-            bio: seedMatch.bio,
-            joinedAt: seedMatch.joinedAt,
-          }
-          set({ user: stored })
+        // Local password override takes priority (supports password changes)
+        const localPw = typeof window !== 'undefined' ? localStorage.getItem(`lms_pw_${email}`) : null
+
+        const seedUser = seedUsers.find((u) => u.email === email)
+        if (seedUser) {
+          const correctPw = localPw ?? seedUser.password
+          if (correctPw !== password) return { success: false, error: 'Incorrect password.' }
+          set({
+            user: {
+              id: seedUser.id, name: seedUser.name, email: seedUser.email,
+              avatar: seedUser.avatar, bio: seedUser.bio, joinedAt: seedUser.joinedAt,
+            },
+          })
           return { success: true }
         }
 
@@ -63,7 +66,7 @@ export const useAuthStore = create<AuthState>()(
         const match = registered.find((u) => u.email === email)
         if (!match) return { success: false, error: 'No account found with this email.' }
 
-        const storedPw = typeof window !== 'undefined' ? localStorage.getItem(`lms_pw_${email}`) : null
+        const storedPw = localPw ?? ''
         if (storedPw !== password) return { success: false, error: 'Incorrect password.' }
 
         set({ user: match })
@@ -117,6 +120,22 @@ export const useAuthStore = create<AuthState>()(
           registered[idx] = updated
           saveRegistered(registered)
         }
+      },
+
+      changePassword: async (currentPw, newPw) => {
+        const { user } = get()
+        if (!user || typeof window === 'undefined') return { success: false, error: 'Not logged in.' }
+
+        const seedUsers = usersData as Array<{ email: string; password: string }>
+        const seed = seedUsers.find((u) => u.email === user.email)
+
+        const localPw = localStorage.getItem(`lms_pw_${user.email}`)
+        const actualPw = localPw ?? seed?.password ?? ''
+
+        if (actualPw !== currentPw) return { success: false, error: 'Current password is incorrect.' }
+
+        localStorage.setItem(`lms_pw_${user.email}`, newPw)
+        return { success: true }
       },
     }),
     {
