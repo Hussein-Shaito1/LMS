@@ -50,7 +50,7 @@ const STATS = [
 
 export default function HeroSwiper() {
   return (
-    <section className="hero-swiper">
+    <section className="hero-swiper section--hero">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"

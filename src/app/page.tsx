@@ -29,7 +29,7 @@ export default function HomePage() {
       <HeroSwiper />
 
       {/* Features */}
-      <section className="section section--white">
+      <section className="section section--white section--features">
         <div className="container">
           <div className="features-grid">
             {[
@@ -53,7 +53,7 @@ export default function HomePage() {
       <TeacherCarousel />
 
       {/* Courses */}
-      <section className="section" id="courses">
+      <section className="section section--courses" id="courses">
         <div className="container">
           <div className="section__header">
             <span className="section__header-eyebrow">Our Catalog</span>

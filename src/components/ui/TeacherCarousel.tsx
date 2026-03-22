@@ -12,7 +12,7 @@ const teachers = getAllTeachers()
 
 export default function TeacherCarousel() {
   return (
-    <section className="section section--white">
+    <section className="section section--white section--teachers">
       <div className="container">
         <div className="section__header">
           <span className="section__header-eyebrow">Meet the Experts</span>
