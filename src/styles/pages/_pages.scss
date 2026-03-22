@@ -1106,12 +1106,48 @@
   }
 
   &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     font-size: $text-xs;
     font-weight: $font-bold;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: $text-muted;
     margin-bottom: $space-4;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  &__chevron {
+    transition: transform $transition;
+    flex-shrink: 0;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__show-more {
+    background: none;
+    border: none;
+    padding: $space-1 0;
+    margin-top: $space-2;
+    font-size: $text-xs;
+    font-weight: $font-medium;
+    color: $primary;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__items {

@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import React, { useState, useMemo } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { filterCourses, getAllTags, getAllTeachers, getCategories, getLevels } from '@/lib/courses'
 import type { SortOption } from '@/lib/courses'
 import CourseCard from '@/components/ui/CourseCard'
 import PageTransition from '@/components/ui/PageTransition'
-import { Search, SlidersHorizontal, X, BookOpen } from 'lucide-react'
+import { Search, SlidersHorizontal, X, BookOpen, ChevronDown } from 'lucide-react'
 
 export default function CoursesPage() {
   const [query, setQuery] = useState('')
@@ -127,35 +127,39 @@ export default function CoursesPage() {
 
                   <FilterGroup label="Level">
                     <div className="filter-group__items">
-                      {levels.map((l) => (
-                        <label key={l} className="filter-check">
-                          <input
-                            type="radio"
-                            name="level"
-                            value={l}
-                            checked={level === l}
-                            onChange={() => setLevel(l)}
-                          />
-                          {l}
-                        </label>
-                      ))}
+                      <FilterOptions max={5}>
+                        {levels.map((l) => (
+                          <label key={l} className="filter-check">
+                            <input
+                              type="radio"
+                              name="level"
+                              value={l}
+                              checked={level === l}
+                              onChange={() => setLevel(l)}
+                            />
+                            {l}
+                          </label>
+                        ))}
+                      </FilterOptions>
                     </div>
                   </FilterGroup>
 
                   <FilterGroup label="Category">
                     <div className="filter-group__items">
-                      {categories.map((c) => (
-                        <label key={c} className="filter-check">
-                          <input
-                            type="radio"
-                            name="category"
-                            value={c}
-                            checked={category === c}
-                            onChange={() => setCategory(c)}
-                          />
-                          {c}
-                        </label>
-                      ))}
+                      <FilterOptions max={5}>
+                        {categories.map((c) => (
+                          <label key={c} className="filter-check">
+                            <input
+                              type="radio"
+                              name="category"
+                              value={c}
+                              checked={category === c}
+                              onChange={() => setCategory(c)}
+                            />
+                            {c}
+                          </label>
+                        ))}
+                      </FilterOptions>
                     </div>
                   </FilterGroup>
 
@@ -174,15 +178,17 @@ export default function CoursesPage() {
 
                   <FilterGroup label="Tags">
                     <div className="filter-group__tags">
-                      {allTags.map((tag) => (
-                        <button
-                          key={tag}
-                          onClick={() => toggleTag(tag)}
-                          className={`badge ${selectedTags.includes(tag) ? 'badge--primary' : 'badge--gray'}`}
-                        >
-                          {tag}
-                        </button>
-                      ))}
+                      <FilterOptions max={6}>
+                        {allTags.map((tag) => (
+                          <button
+                            key={tag}
+                            onClick={() => toggleTag(tag)}
+                            className={`badge ${selectedTags.includes(tag) ? 'badge--primary' : 'badge--gray'}`}
+                          >
+                            {tag}
+                          </button>
+                        ))}
+                      </FilterOptions>
                     </div>
                   </FilterGroup>
 
@@ -240,11 +246,57 @@ export default function CoursesPage() {
   )
 }
 
-function FilterGroup({ label, children }: { label: string; children: React.ReactNode }) {
+function FilterGroup({ label, children, defaultOpen = true }: { label: string; children: React.ReactNode; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen)
   return (
     <div className="filter-group">
-      <p className="filter-group__label">{label}</p>
-      {children}
+      <button className="filter-group__label" onClick={() => setOpen(v => !v)}>
+        {label}
+        <ChevronDown size={14} className={`filter-group__chevron${open ? ' filter-group__chevron--open' : ''}`} />
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
+  )
+}
+
+function FilterOptions({ children, max = 5 }: { children: React.ReactNode; max?: number }) {
+  const [showAll, setShowAll] = useState(false)
+  const all = React.Children.toArray(children)
+  const visible = all.slice(0, max)
+  const hidden = all.slice(max)
+  return (
+    <>
+      {visible}
+      <AnimatePresence initial={false}>
+        {showAll && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
+          >
+            {hidden}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {hidden.length > 0 && (
+        <button className="filter-group__show-more" onClick={() => setShowAll(v => !v)}>
+          {showAll ? 'Show less' : `+${hidden.length} more`}
+        </button>
+      )}
+    </>
   )
 }
