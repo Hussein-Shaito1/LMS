@@ -741,6 +741,30 @@
     flex-shrink: 0;
     position: sticky;
     top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    // Custom scrollbar
+    scrollbar-width: thin;
+    scrollbar-color: $gray-300 transparent;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $gray-300;
+      border-radius: 99px;
+
+      &:hover {
+        background: $gray-400;
+      }
+    }
 
     @include max-lg {
       position: fixed;
