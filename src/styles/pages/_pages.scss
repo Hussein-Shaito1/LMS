@@ -968,17 +968,21 @@
 .filter-bar {
   display: flex;
   gap: $space-3;
-  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: $space-6;
+  margin-bottom: $space-3;
+  flex-wrap: nowrap;
 
   .search-bar {
     flex: 1;
-    min-width: 220px;
+    min-width: 0;
+
+    input { height: 42px; }
   }
 
   .select {
-    min-width: 160px;
+    flex-shrink: 0;
+    width: auto;
+    height: 42px;
   }
 }
 
@@ -992,10 +996,23 @@
   line-height: 1.4;
 }
 
+.results-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-6;
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+}
+
 .filter-results {
   font-size: $text-sm;
   color: $text-secondary;
-  margin-bottom: $space-5;
+  margin: 0;
 }
 
 .filter-empty {

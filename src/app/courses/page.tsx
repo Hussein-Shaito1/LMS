@@ -15,7 +15,7 @@ export default function CoursesPage() {
   const [teacherId, setTeacherId] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [sort, setSort] = useState<SortOption>('popular')
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
 
   const categories = ['All', ...getCategories()]
   const levels = ['All', ...getLevels()]
@@ -55,9 +55,8 @@ export default function CoursesPage() {
           <p>Explore our full library of courses across every topic.</p>
         </div>
 
-        {/* Top bar: search + sort + filter toggle */}
+        {/* Search + Sort */}
         <div className="filter-bar">
-          {/* Search */}
           <div className="search-bar">
             <Search className="search-bar__icon" size={18} />
             <input
@@ -67,8 +66,6 @@ export default function CoursesPage() {
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
-
-          {/* Sort */}
           <select
             className="select"
             value={sort}
@@ -79,31 +76,38 @@ export default function CoursesPage() {
             <option value="newest">Newest First</option>
             <option value="shortest">Shortest Duration</option>
           </select>
+        </div>
 
-          {/* Filter toggle */}
-          <button
-            className={`btn ${sidebarOpen ? 'btn--primary' : 'btn--secondary'} btn--sm`}
-            onClick={() => setSidebarOpen((v) => !v)}
-          >
-            <SlidersHorizontal size={15} />
-            Filters
-            {hasActiveFilters && (
-              <span className="filter-badge">
-                {[
-                  level !== 'All' && 1,
-                  category !== 'All' && 1,
-                  teacherId && 1,
-                  selectedTags.length,
-                ].filter(Boolean).reduce((a: number, b) => a + (b as number), 0)}
-              </span>
-            )}
-          </button>
-
-          {hasActiveFilters && (
-            <button className="btn btn--ghost btn--sm" onClick={clearAll}>
-              <X size={14} /> Clear
+        {/* Results bar */}
+        <div className="results-bar">
+          <p className="filter-results">
+            Showing <strong>{results.length}</strong> course{results.length !== 1 ? 's' : ''}
+            {query && ` for "${query}"`}
+          </p>
+          <div className="results-bar__actions">
+            <button
+              className={`btn ${sidebarOpen ? 'btn--primary' : 'btn--secondary'} btn--sm`}
+              onClick={() => setSidebarOpen((v) => !v)}
+            >
+              <SlidersHorizontal size={15} />
+              Filters
+              {hasActiveFilters && (
+                <span className="filter-badge">
+                  {[
+                    level !== 'All' && 1,
+                    category !== 'All' && 1,
+                    teacherId && 1,
+                    selectedTags.length,
+                  ].filter(Boolean).reduce((a: number, b) => a + (b as number), 0)}
+                </span>
+              )}
             </button>
-          )}
+            {hasActiveFilters && (
+              <button className="btn btn--ghost btn--sm" onClick={clearAll}>
+                <X size={14} /> Clear
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="courses-layout">
@@ -225,11 +229,6 @@ export default function CoursesPage() {
 
           {/* Results */}
           <div className="courses-layout__results">
-            <p className="filter-results">
-              Showing <strong>{results.length}</strong> course{results.length !== 1 ? 's' : ''}
-              {query && ` for "${query}"`}
-            </p>
-
             {results.length === 0 ? (
               <div className="filter-empty">
                 <BookOpen size={48} />
