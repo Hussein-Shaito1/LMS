@@ -1,6 +1,7 @@
 "use client";
 
 import CourseCard from "@/components/ui/CourseCard";
+import Pagination from "@/components/ui/Pagination";
 import PageTransition from "@/components/ui/PageTransition";
 import type { SortOption } from "@/lib/courses";
 import {
@@ -264,22 +265,25 @@ export default function CoursesPage() {
                 </button>
               </div>
             ) : (
-              <motion.div className="courses-grid" layout>
-                {results.map((course, i) => (
-                  <motion.div
-                    key={course.id}
-                    layout
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.25,
-                      delay: Math.min(i * 0.04, 0.3),
-                    }}
-                  >
-                    <CourseCard course={course} />
-                  </motion.div>
-                ))}
-              </motion.div>
+              <>
+                <motion.div className="courses-grid" layout>
+                  {paginated.map((course, i) => (
+                    <motion.div
+                      key={course.id}
+                      layout
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.25,
+                        delay: Math.min(i * 0.04, 0.3),
+                      }}
+                    >
+                      <CourseCard course={course} />
+                    </motion.div>
+                  ))}
+                </motion.div>
+                <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+              </>
             )}
           </div>
         </div>
