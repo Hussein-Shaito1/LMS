@@ -1,0 +1,31 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveSassCompile.settings.includeItems": ["src/assets/scss/style.scss"],
+  "liveSassCompile.settings.excludeList": ["**/node_modules/**", "**/*.map"],
+  "liveSassCompile.settings.generateMap": true,
+  "vscode-pokemon.defaultPokemon": [
+    {
+      "type": "pikachu",
+      "name": "Sparky"
+    },
+    {
+      "type": "charizard",
+      "name": "Flame"
+    },
+    {
+      "type": "articuno"
+    }
+  ]
+}

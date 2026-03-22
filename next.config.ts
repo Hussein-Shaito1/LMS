@@ -3,7 +3,7 @@ import path from 'path'
 
 const nextConfig: NextConfig = {
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+    includePaths: [path.join(__dirname, 'src/styles')],
     additionalData: `
       @import "base/variables";
       @import "base/mixins";
