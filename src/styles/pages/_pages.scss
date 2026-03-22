@@ -1035,19 +1035,8 @@
   }
 }
 
-// Mobile filter bottom-sheet overlay
-.filter-overlay__backdrop {
-  display: none;
-
-  @include max-lg {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 199;
-    background: rgba(15, 23, 42, 0.5);
-    backdrop-filter: blur(3px);
-  }
-}
+// Mobile filter backdrop (unused now — full screen covers everything)
+.filter-overlay__backdrop { display: none; }
 
 .filter-popup-handle {
   display: none;
@@ -1191,6 +1180,10 @@
 // ============================================
 // UTILITY
 // ============================================
+
+.mobile-only {
+  @include lg { display: none !important; }
+}
 
 .text-red {
   color: #ef4444;

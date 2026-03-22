@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { filterCourses, getAllTags, getAllTeachers, getCategories, getLevels } from '@/lib/courses'
 import type { SortOption } from '@/lib/courses'
 import CourseCard from '@/components/ui/CourseCard'
@@ -15,7 +15,7 @@ export default function CoursesPage() {
   const [teacherId, setTeacherId] = useState('')
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [sort, setSort] = useState<SortOption>('popular')
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const categories = ['All', ...getCategories()]
   const levels = ['All', ...getLevels()]
@@ -86,7 +86,7 @@ export default function CoursesPage() {
           </p>
           <div className="results-bar__actions">
             <button
-              className={`btn ${sidebarOpen ? 'btn--primary' : 'btn--secondary'} btn--sm`}
+              className={`btn ${sidebarOpen ? 'btn--primary' : 'btn--secondary'} btn--sm mobile-only`}
               onClick={() => setSidebarOpen((v) => !v)}
             >
               <SlidersHorizontal size={15} />
@@ -113,26 +113,7 @@ export default function CoursesPage() {
         <div className="courses-layout">
 
           {/* Sidebar filters */}
-          <AnimatePresence>
-            {sidebarOpen && (
-              <>
-                {/* Mobile backdrop */}
-                <motion.div
-                  className="filter-overlay__backdrop"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  onClick={() => setSidebarOpen(false)}
-                />
-
-                <motion.aside
-                  className="courses-layout__sidebar card"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 24 }}
-                  transition={{ duration: 0.22, ease: 'easeOut' }}
-                >
+          <aside className={`courses-layout__sidebar card${sidebarOpen ? ' is-open' : ''}`}>
                   {/* Mobile drag handle */}
                   <div className="filter-popup-handle" />
 
@@ -222,10 +203,7 @@ export default function CoursesPage() {
                       </button>
                     )}
                   </div>
-                </motion.aside>
-              </>
-            )}
-          </AnimatePresence>
+          </aside>
 
           {/* Results */}
           <div className="courses-layout__results">
