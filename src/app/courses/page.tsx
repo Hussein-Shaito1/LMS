@@ -19,17 +19,34 @@ import {
   SlidersHorizontal,
   X,
 } from "lucide-react";
-import React, { useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useMemo, useState } from "react";
 
 export default function CoursesPage() {
-  const [query, setQuery] = useState("");
-  const [level, setLevel] = useState("All");
-  const [category, setCategory] = useState("All");
-  const [teacherId, setTeacherId] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [sort, setSort] = useState<SortOption>("popular");
+  return (
+    <Suspense>
+      <CoursesContent />
+    </Suspense>
+  );
+}
+
+function CoursesContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [query, setQuery] = useState(() => searchParams.get("q") || "");
+  const [level, setLevel] = useState(() => searchParams.get("level") || "All");
+  const [category, setCategory] = useState(() => searchParams.get("category") || "All");
+  const [teacherId, setTeacherId] = useState(() => searchParams.get("teacher") || "");
+  const [selectedTags, setSelectedTags] = useState<string[]>(() => {
+    const t = searchParams.get("tags");
+    return t ? t.split(",").filter(Boolean) : [];
+  });
+  const [sort, setSort] = useState<SortOption>(
+    () => (searchParams.get("sort") as SortOption) || "popular"
+  );
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(() => Number(searchParams.get("page")) || 1);
   const PER_PAGE = 6;
 
   const categories = ["All", ...getCategories()];
@@ -37,16 +54,23 @@ export default function CoursesPage() {
   const allTags = getAllTags();
   const allTeachers = getAllTeachers();
 
+  // Sync state → URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (query) params.set("q", query);
+    if (level !== "All") params.set("level", level);
+    if (category !== "All") params.set("category", category);
+    if (teacherId) params.set("teacher", teacherId);
+    if (selectedTags.length) params.set("tags", selectedTags.join(","));
+    if (sort !== "popular") params.set("sort", sort);
+    if (page > 1) params.set("page", String(page));
+    const qs = params.toString();
+    router.replace(qs ? `?${qs}` : "?", { scroll: false });
+  }, [query, level, category, teacherId, selectedTags, sort, page, router]);
+
   const results = useMemo(() => {
     setPage(1);
-    return filterCourses({
-      query,
-      level,
-      category,
-      teacherId,
-      tags: selectedTags,
-      sort,
-    });
+    return filterCourses({ query, level, category, teacherId, tags: selectedTags, sort });
   }, [query, level, category, teacherId, selectedTags, sort]);
 
   const totalPages = Math.ceil(results.length / PER_PAGE);
@@ -54,7 +78,7 @@ export default function CoursesPage() {
 
   function toggleTag(tag: string) {
     setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
     );
   }
 
@@ -68,16 +92,11 @@ export default function CoursesPage() {
   }
 
   const hasActiveFilters =
-    query ||
-    level !== "All" ||
-    category !== "All" ||
-    teacherId ||
-    selectedTags.length > 0;
+    query || level !== "All" || category !== "All" || teacherId || selectedTags.length > 0;
 
   return (
     <PageTransition>
       <div className="container courses-page">
-        {/* Page header */}
         <div className="courses-page__header">
           <h1>All Courses</h1>
           <p>Explore our full library of courses across every topic.</p>
@@ -143,19 +162,11 @@ export default function CoursesPage() {
 
         <div className="courses-layout">
           {/* Sidebar filters */}
-          <aside
-            className={`courses-layout__sidebar card${sidebarOpen ? " is-open" : ""}`}
-          >
-            {/* Mobile drag handle */}
+          <aside className={`courses-layout__sidebar card${sidebarOpen ? " is-open" : ""}`}>
             <div className="filter-popup-handle" />
-
-            {/* Mobile header */}
             <div className="filter-popup-header">
               <span>Filters</span>
-              <button
-                onClick={() => setSidebarOpen(false)}
-                aria-label="Close filters"
-              >
+              <button onClick={() => setSidebarOpen(false)} aria-label="Close filters">
                 <X size={18} />
               </button>
             </div>
@@ -206,9 +217,7 @@ export default function CoursesPage() {
               >
                 <option value="">All Instructors</option>
                 {allTeachers.map((t) => (
-                  <option key={t.id} value={t.id}>
-                    {t.name}
-                  </option>
+                  <option key={t.id} value={t.id}>{t.name}</option>
                 ))}
               </select>
             </FilterGroup>
@@ -229,7 +238,6 @@ export default function CoursesPage() {
               </div>
             </FilterGroup>
 
-            {/* Mobile apply button */}
             <div className="filter-popup-footer">
               <button
                 className="btn btn--primary btn--full"
@@ -240,10 +248,7 @@ export default function CoursesPage() {
               {hasActiveFilters && (
                 <button
                   className="btn btn--ghost btn--full"
-                  onClick={() => {
-                    clearAll();
-                    setSidebarOpen(false);
-                  }}
+                  onClick={() => { clearAll(); setSidebarOpen(false); }}
                 >
                   Clear all filters
                 </button>
@@ -257,10 +262,7 @@ export default function CoursesPage() {
               <div className="filter-empty">
                 <BookOpen size={48} />
                 <p>No courses match your filters.</p>
-                <button
-                  className="btn btn--secondary btn--sm"
-                  onClick={clearAll}
-                >
+                <button className="btn btn--secondary btn--sm" onClick={clearAll}>
                   Clear filters
                 </button>
               </div>
@@ -273,10 +275,7 @@ export default function CoursesPage() {
                       layout
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.25,
-                        delay: Math.min(i * 0.04, 0.3),
-                      }}
+                      transition={{ duration: 0.25, delay: Math.min(i * 0.04, 0.3) }}
                     >
                       <CourseCard course={course} />
                     </motion.div>
@@ -304,10 +303,7 @@ function FilterGroup({
   const [open, setOpen] = useState(defaultOpen);
   return (
     <div className="filter-group">
-      <button
-        className="filter-group__label"
-        onClick={() => setOpen((v) => !v)}
-      >
+      <button className="filter-group__label" onClick={() => setOpen((v) => !v)}>
         {label}
         <ChevronDown
           size={14}
@@ -331,13 +327,7 @@ function FilterGroup({
   );
 }
 
-function FilterOptions({
-  children,
-  max = 5,
-}: {
-  children: React.ReactNode;
-  max?: number;
-}) {
+function FilterOptions({ children, max = 5 }: { children: React.ReactNode; max?: number }) {
   const [showAll, setShowAll] = useState(false);
   const all = React.Children.toArray(children);
   const visible = all.slice(0, max);
@@ -359,10 +349,7 @@ function FilterOptions({
         )}
       </AnimatePresence>
       {hidden.length > 0 && (
-        <button
-          className="filter-group__show-more"
-          onClick={() => setShowAll((v) => !v)}
-        >
+        <button className="filter-group__show-more" onClick={() => setShowAll((v) => !v)}>
           {showAll ? "Show less" : `+${hidden.length} more`}
         </button>
       )}
