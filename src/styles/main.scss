@@ -112,6 +112,74 @@
 // COURSE GRID
 // ============================================
 
+// ============================================
+// TEACHER CAROUSEL
+// ============================================
+
+.teacher-carousel {
+  padding-bottom: $space-10 !important;
+}
+
+.teacher-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $space-6;
+  border-radius: $radius-lg;
+  border: 1.5px solid $border;
+  background: $white;
+  text-decoration: none;
+  transition: $transition-all;
+  height: 100%;
+
+  &:hover {
+    border-color: $primary-light;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+    transform: translateY(-3px);
+  }
+
+  &__avatar-wrap {
+    margin-bottom: $space-4;
+    padding: 3px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $primary, $secondary);
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid $white;
+  }
+
+  &__name {
+    font-size: $text-base;
+    font-weight: $font-semibold;
+    color: $text-primary;
+    margin-bottom: $space-1;
+  }
+
+  &__title {
+    font-size: $text-xs;
+    color: $text-secondary;
+    line-height: $leading-relaxed;
+    margin-bottom: $space-3;
+    flex: 1;
+  }
+
+  &__courses {
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+    color: $primary;
+    background: $primary-lighter;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+  }
+}
+
+// ============================================
+
 .courses-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

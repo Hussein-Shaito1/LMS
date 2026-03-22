@@ -7,6 +7,7 @@ import CourseCard from '@/components/ui/CourseCard'
 import SearchFilter from '@/components/ui/SearchFilter'
 import PageTransition from '@/components/ui/PageTransition'
 import HeroSwiper from '@/components/ui/HeroSwiper'
+import TeacherCarousel from '@/components/ui/TeacherCarousel'
 import { BookOpen, Users, Award, Star } from 'lucide-react'
 
 export default function HomePage() {
@@ -48,6 +49,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TeacherCarousel />
 
       {/* Courses */}
       <section className="section" id="courses">
