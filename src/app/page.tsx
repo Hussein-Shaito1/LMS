@@ -6,14 +6,8 @@ import { getAllCourses, searchCourses } from '@/lib/courses'
 import CourseCard from '@/components/ui/CourseCard'
 import SearchFilter from '@/components/ui/SearchFilter'
 import PageTransition from '@/components/ui/PageTransition'
+import HeroSwiper from '@/components/ui/HeroSwiper'
 import { BookOpen, Users, Award, Star } from 'lucide-react'
-
-const STATS = [
-  { value: '10+', label: 'Expert Courses' },
-  { value: '50K+', label: 'Students Enrolled' },
-  { value: '4.8★', label: 'Average Rating' },
-  { value: '100%', label: 'Free to Browse' },
-]
 
 export default function HomePage() {
   const allCourses = getAllCourses()
@@ -31,42 +25,7 @@ export default function HomePage() {
 
   return (
     <PageTransition>
-      {/* Hero */}
-      <section className="hero">
-        <div className="container">
-          <div className="hero__eyebrow">
-            <BookOpen size={14} />
-            The Future of Learning is Here
-          </div>
-
-          <h1>
-            Learn Without <span>Limits</span>
-          </h1>
-
-          <p className="hero__subtitle">
-            Explore 10+ expert-led courses in web development, design, data science, and more.
-            Track your progress and learn at your own pace — completely free.
-          </p>
-
-          <div className="hero__actions">
-            <Link href="#courses" className="btn btn--primary btn--lg">
-              Browse Courses
-            </Link>
-            <Link href="/register" className="btn btn--secondary btn--lg">
-              Start Learning Free
-            </Link>
-          </div>
-
-          <div className="hero__stats">
-            {STATS.map(({ value, label }) => (
-              <div key={label} className="hero__stat">
-                <div className="hero__stat-value">{value}</div>
-                <div className="hero__stat-label">{label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HeroSwiper />
 
       {/* Features */}
       <section className="section section--white">
